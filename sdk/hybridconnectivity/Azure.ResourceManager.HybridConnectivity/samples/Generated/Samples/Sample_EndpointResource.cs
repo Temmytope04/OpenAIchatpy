@@ -184,7 +184,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
 
             // invoke the operation
             long? expiresin = 10800L;
-            IngressGatewayResource result = await endpointResource.GetIngressGatewayCredentialsAsync(expiresin: expiresin);
+            IngressGatewayAsset result = await endpointResource.GetIngressGatewayCredentialsAsync(expiresin: expiresin);
 
             Console.WriteLine($"Succeeded: {result}");
         }
@@ -215,7 +215,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
                 Hostname = "r.proxy.arc.com",
                 ServiceName = ServiceName.WAC,
             };
-            ManagedProxyResource result = await endpointResource.GetManagedProxyDetailsAsync(content);
+            ManagedProxyAsset result = await endpointResource.GetManagedProxyDetailsAsync(content);
 
             Console.WriteLine($"Succeeded: {result}");
         }

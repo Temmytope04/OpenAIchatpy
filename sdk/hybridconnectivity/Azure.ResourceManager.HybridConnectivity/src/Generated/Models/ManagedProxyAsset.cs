@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace Azure.ResourceManager.HybridConnectivity.Models
 {
     /// <summary> Managed Proxy. </summary>
-    public partial class ManagedProxyResource
+    public partial class ManagedProxyAsset
     {
         /// <summary>
         /// Keeps track of any properties unknown to the library.
@@ -45,11 +45,11 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// </summary>
         private IDictionary<string, BinaryData> _serializedAdditionalRawData;
 
-        /// <summary> Initializes a new instance of <see cref="ManagedProxyResource"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="ManagedProxyAsset"/>. </summary>
         /// <param name="proxy"> The short lived proxy name. </param>
         /// <param name="expiresOn"> The expiration time of short lived proxy name in unix epoch. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="proxy"/> is null. </exception>
-        internal ManagedProxyResource(string proxy, long expiresOn)
+        internal ManagedProxyAsset(string proxy, long expiresOn)
         {
             Argument.AssertNotNull(proxy, nameof(proxy));
 
@@ -57,19 +57,19 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
             ExpiresOn = expiresOn;
         }
 
-        /// <summary> Initializes a new instance of <see cref="ManagedProxyResource"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="ManagedProxyAsset"/>. </summary>
         /// <param name="proxy"> The short lived proxy name. </param>
         /// <param name="expiresOn"> The expiration time of short lived proxy name in unix epoch. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal ManagedProxyResource(string proxy, long expiresOn, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal ManagedProxyAsset(string proxy, long expiresOn, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             Proxy = proxy;
             ExpiresOn = expiresOn;
             _serializedAdditionalRawData = serializedAdditionalRawData;
         }
 
-        /// <summary> Initializes a new instance of <see cref="ManagedProxyResource"/> for deserialization. </summary>
-        internal ManagedProxyResource()
+        /// <summary> Initializes a new instance of <see cref="ManagedProxyAsset"/> for deserialization. </summary>
+        internal ManagedProxyAsset()
         {
         }
 

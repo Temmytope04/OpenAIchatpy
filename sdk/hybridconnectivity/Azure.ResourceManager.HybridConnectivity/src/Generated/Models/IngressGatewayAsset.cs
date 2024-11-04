@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace Azure.ResourceManager.HybridConnectivity.Models
 {
     /// <summary> The ingress gateway access credentials. </summary>
-    public partial class IngressGatewayResource
+    public partial class IngressGatewayAsset
     {
         /// <summary>
         /// Keeps track of any properties unknown to the library.
@@ -45,12 +45,12 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// </summary>
         private IDictionary<string, BinaryData> _serializedAdditionalRawData;
 
-        /// <summary> Initializes a new instance of <see cref="IngressGatewayResource"/>. </summary>
-        internal IngressGatewayResource()
+        /// <summary> Initializes a new instance of <see cref="IngressGatewayAsset"/>. </summary>
+        internal IngressGatewayAsset()
         {
         }
 
-        /// <summary> Initializes a new instance of <see cref="IngressGatewayResource"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="IngressGatewayAsset"/>. </summary>
         /// <param name="hostname"> The ingress hostname. </param>
         /// <param name="serverId"> The arc ingress gateway server app id. </param>
         /// <param name="tenantId"> The target resource home tenant id. </param>
@@ -61,7 +61,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="expiresOn"> The expiration of access key in unix time. </param>
         /// <param name="serviceConfigurationToken"> The token to access the enabled service. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal IngressGatewayResource(string hostname, string serverId, Guid? tenantId, string namespaceName, string namespaceNameSuffix, string hybridConnectionName, string accessKey, long? expiresOn, string serviceConfigurationToken, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal IngressGatewayAsset(string hostname, string serverId, Guid? tenantId, string namespaceName, string namespaceNameSuffix, string hybridConnectionName, string accessKey, long? expiresOn, string serviceConfigurationToken, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             Hostname = hostname;
             ServerId = serverId;

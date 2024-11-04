@@ -13,11 +13,11 @@ using Azure.Core;
 
 namespace Azure.ResourceManager.HybridConnectivity.Models
 {
-    public partial class ManagedProxyResource : IUtf8JsonSerializable, IJsonModel<ManagedProxyResource>
+    public partial class ManagedProxyAsset : IUtf8JsonSerializable, IJsonModel<ManagedProxyAsset>
     {
-        void IUtf8JsonSerializable.Write(Utf8JsonWriter writer) => ((IJsonModel<ManagedProxyResource>)this).Write(writer, ModelSerializationExtensions.WireOptions);
+        void IUtf8JsonSerializable.Write(Utf8JsonWriter writer) => ((IJsonModel<ManagedProxyAsset>)this).Write(writer, ModelSerializationExtensions.WireOptions);
 
-        void IJsonModel<ManagedProxyResource>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
+        void IJsonModel<ManagedProxyAsset>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
             writer.WriteStartObject();
             JsonModelWriteCore(writer, options);
@@ -28,10 +28,10 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="options"> The client options for reading and writing models. </param>
         protected virtual void JsonModelWriteCore(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<ManagedProxyResource>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<ManagedProxyAsset>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
-                throw new FormatException($"The model {nameof(ManagedProxyResource)} does not support writing '{format}' format.");
+                throw new FormatException($"The model {nameof(ManagedProxyAsset)} does not support writing '{format}' format.");
             }
 
             writer.WritePropertyName("proxy"u8);
@@ -55,19 +55,19 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
             }
         }
 
-        ManagedProxyResource IJsonModel<ManagedProxyResource>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
+        ManagedProxyAsset IJsonModel<ManagedProxyAsset>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<ManagedProxyResource>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<ManagedProxyAsset>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
-                throw new FormatException($"The model {nameof(ManagedProxyResource)} does not support reading '{format}' format.");
+                throw new FormatException($"The model {nameof(ManagedProxyAsset)} does not support reading '{format}' format.");
             }
 
             using JsonDocument document = JsonDocument.ParseValue(ref reader);
-            return DeserializeManagedProxyResource(document.RootElement, options);
+            return DeserializeManagedProxyAsset(document.RootElement, options);
         }
 
-        internal static ManagedProxyResource DeserializeManagedProxyResource(JsonElement element, ModelReaderWriterOptions options = null)
+        internal static ManagedProxyAsset DeserializeManagedProxyAsset(JsonElement element, ModelReaderWriterOptions options = null)
         {
             options ??= ModelSerializationExtensions.WireOptions;
 
@@ -97,38 +97,38 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
                 }
             }
             serializedAdditionalRawData = rawDataDictionary;
-            return new ManagedProxyResource(proxy, expiresOn, serializedAdditionalRawData);
+            return new ManagedProxyAsset(proxy, expiresOn, serializedAdditionalRawData);
         }
 
-        BinaryData IPersistableModel<ManagedProxyResource>.Write(ModelReaderWriterOptions options)
+        BinaryData IPersistableModel<ManagedProxyAsset>.Write(ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<ManagedProxyResource>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<ManagedProxyAsset>)this).GetFormatFromOptions(options) : options.Format;
 
             switch (format)
             {
                 case "J":
                     return ModelReaderWriter.Write(this, options);
                 default:
-                    throw new FormatException($"The model {nameof(ManagedProxyResource)} does not support writing '{options.Format}' format.");
+                    throw new FormatException($"The model {nameof(ManagedProxyAsset)} does not support writing '{options.Format}' format.");
             }
         }
 
-        ManagedProxyResource IPersistableModel<ManagedProxyResource>.Create(BinaryData data, ModelReaderWriterOptions options)
+        ManagedProxyAsset IPersistableModel<ManagedProxyAsset>.Create(BinaryData data, ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<ManagedProxyResource>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<ManagedProxyAsset>)this).GetFormatFromOptions(options) : options.Format;
 
             switch (format)
             {
                 case "J":
                     {
                         using JsonDocument document = JsonDocument.Parse(data);
-                        return DeserializeManagedProxyResource(document.RootElement, options);
+                        return DeserializeManagedProxyAsset(document.RootElement, options);
                     }
                 default:
-                    throw new FormatException($"The model {nameof(ManagedProxyResource)} does not support reading '{options.Format}' format.");
+                    throw new FormatException($"The model {nameof(ManagedProxyAsset)} does not support reading '{options.Format}' format.");
             }
         }
 
-        string IPersistableModel<ManagedProxyResource>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+        string IPersistableModel<ManagedProxyAsset>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
     }
 }

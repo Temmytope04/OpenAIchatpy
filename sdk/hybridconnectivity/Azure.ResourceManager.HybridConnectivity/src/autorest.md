@@ -50,6 +50,11 @@ acronym-mapping:
   URI: Uri
   Etag: ETag|etag
 
+rename-mapping:
+  # IngressGatewayResource and ManagedProxyResource are not ARM resource but end with Resource suffix which is not allowed, so we need to rename them
+  IngressGatewayResource: IngressGatewayAsset
+  ManagedProxyResource: ManagedProxyAsset
+
 directive:
   - rename-model:
       from: EndpointAccessResource

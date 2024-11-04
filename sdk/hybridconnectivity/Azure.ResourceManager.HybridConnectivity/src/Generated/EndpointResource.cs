@@ -510,7 +510,7 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <param name="content"> Object of type ListIngressGatewayCredentialsRequest. </param>
         /// <param name="expiresin"> The is how long the endpoint access token is valid (in seconds). </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual async Task<Response<IngressGatewayResource>> GetIngressGatewayCredentialsAsync(ListIngressGatewayCredentialsContent content = null, long? expiresin = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<IngressGatewayAsset>> GetIngressGatewayCredentialsAsync(ListIngressGatewayCredentialsContent content = null, long? expiresin = null, CancellationToken cancellationToken = default)
         {
             using var scope = _endpointResourceEndpointsClientDiagnostics.CreateScope("EndpointResource.GetIngressGatewayCredentials");
             scope.Start();
@@ -550,7 +550,7 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <param name="content"> Object of type ListIngressGatewayCredentialsRequest. </param>
         /// <param name="expiresin"> The is how long the endpoint access token is valid (in seconds). </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual Response<IngressGatewayResource> GetIngressGatewayCredentials(ListIngressGatewayCredentialsContent content = null, long? expiresin = null, CancellationToken cancellationToken = default)
+        public virtual Response<IngressGatewayAsset> GetIngressGatewayCredentials(ListIngressGatewayCredentialsContent content = null, long? expiresin = null, CancellationToken cancellationToken = default)
         {
             using var scope = _endpointResourceEndpointsClientDiagnostics.CreateScope("EndpointResource.GetIngressGatewayCredentials");
             scope.Start();
@@ -590,7 +590,7 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <param name="content"> Object of type ManagedProxyRequest. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="content"/> is null. </exception>
-        public virtual async Task<Response<ManagedProxyResource>> GetManagedProxyDetailsAsync(ManagedProxyContent content, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<ManagedProxyAsset>> GetManagedProxyDetailsAsync(ManagedProxyContent content, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(content, nameof(content));
 
@@ -632,7 +632,7 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <param name="content"> Object of type ManagedProxyRequest. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="content"/> is null. </exception>
-        public virtual Response<ManagedProxyResource> GetManagedProxyDetails(ManagedProxyContent content, CancellationToken cancellationToken = default)
+        public virtual Response<ManagedProxyAsset> GetManagedProxyDetails(ManagedProxyContent content, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(content, nameof(content));
 

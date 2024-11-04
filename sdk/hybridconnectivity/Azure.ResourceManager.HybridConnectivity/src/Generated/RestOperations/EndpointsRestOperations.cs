@@ -609,7 +609,7 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <param name="expiresin"> The is how long the endpoint access token is valid (in seconds). </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="scope"/> or <paramref name="endpointName"/> is null. </exception>
-        public async Task<Response<IngressGatewayResource>> ListIngressGatewayCredentialsAsync(string scope, string endpointName, ListIngressGatewayCredentialsContent content = null, long? expiresin = null, CancellationToken cancellationToken = default)
+        public async Task<Response<IngressGatewayAsset>> ListIngressGatewayCredentialsAsync(string scope, string endpointName, ListIngressGatewayCredentialsContent content = null, long? expiresin = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(scope, nameof(scope));
             Argument.AssertNotNull(endpointName, nameof(endpointName));
@@ -620,9 +620,9 @@ namespace Azure.ResourceManager.HybridConnectivity
             {
                 case 200:
                     {
-                        IngressGatewayResource value = default;
+                        IngressGatewayAsset value = default;
                         using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        value = IngressGatewayResource.DeserializeIngressGatewayResource(document.RootElement);
+                        value = IngressGatewayAsset.DeserializeIngressGatewayAsset(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -637,7 +637,7 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <param name="expiresin"> The is how long the endpoint access token is valid (in seconds). </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="scope"/> or <paramref name="endpointName"/> is null. </exception>
-        public Response<IngressGatewayResource> ListIngressGatewayCredentials(string scope, string endpointName, ListIngressGatewayCredentialsContent content = null, long? expiresin = null, CancellationToken cancellationToken = default)
+        public Response<IngressGatewayAsset> ListIngressGatewayCredentials(string scope, string endpointName, ListIngressGatewayCredentialsContent content = null, long? expiresin = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(scope, nameof(scope));
             Argument.AssertNotNull(endpointName, nameof(endpointName));
@@ -648,9 +648,9 @@ namespace Azure.ResourceManager.HybridConnectivity
             {
                 case 200:
                     {
-                        IngressGatewayResource value = default;
+                        IngressGatewayAsset value = default;
                         using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        value = IngressGatewayResource.DeserializeIngressGatewayResource(document.RootElement);
+                        value = IngressGatewayAsset.DeserializeIngressGatewayAsset(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -700,7 +700,7 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <param name="content"> Object of type ManagedProxyRequest. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="scope"/>, <paramref name="endpointName"/> or <paramref name="content"/> is null. </exception>
-        public async Task<Response<ManagedProxyResource>> ListManagedProxyDetailsAsync(string scope, string endpointName, ManagedProxyContent content, CancellationToken cancellationToken = default)
+        public async Task<Response<ManagedProxyAsset>> ListManagedProxyDetailsAsync(string scope, string endpointName, ManagedProxyContent content, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(scope, nameof(scope));
             Argument.AssertNotNull(endpointName, nameof(endpointName));
@@ -712,9 +712,9 @@ namespace Azure.ResourceManager.HybridConnectivity
             {
                 case 200:
                     {
-                        ManagedProxyResource value = default;
+                        ManagedProxyAsset value = default;
                         using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        value = ManagedProxyResource.DeserializeManagedProxyResource(document.RootElement);
+                        value = ManagedProxyAsset.DeserializeManagedProxyAsset(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -728,7 +728,7 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <param name="content"> Object of type ManagedProxyRequest. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="scope"/>, <paramref name="endpointName"/> or <paramref name="content"/> is null. </exception>
-        public Response<ManagedProxyResource> ListManagedProxyDetails(string scope, string endpointName, ManagedProxyContent content, CancellationToken cancellationToken = default)
+        public Response<ManagedProxyAsset> ListManagedProxyDetails(string scope, string endpointName, ManagedProxyContent content, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(scope, nameof(scope));
             Argument.AssertNotNull(endpointName, nameof(endpointName));
@@ -740,9 +740,9 @@ namespace Azure.ResourceManager.HybridConnectivity
             {
                 case 200:
                     {
-                        ManagedProxyResource value = default;
+                        ManagedProxyAsset value = default;
                         using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        value = ManagedProxyResource.DeserializeManagedProxyResource(document.RootElement);
+                        value = ManagedProxyAsset.DeserializeManagedProxyAsset(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:

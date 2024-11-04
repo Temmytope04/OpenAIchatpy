@@ -310,7 +310,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="Models.IngressGatewayResource"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="Models.IngressGatewayAsset"/>. </summary>
         /// <param name="hostname"> The ingress hostname. </param>
         /// <param name="serverId"> The arc ingress gateway server app id. </param>
         /// <param name="tenantId"> The target resource home tenant id. </param>
@@ -320,10 +320,10 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="accessKey"> Access key for hybrid connection. </param>
         /// <param name="expiresOn"> The expiration of access key in unix time. </param>
         /// <param name="serviceConfigurationToken"> The token to access the enabled service. </param>
-        /// <returns> A new <see cref="Models.IngressGatewayResource"/> instance for mocking. </returns>
-        public static IngressGatewayResource IngressGatewayResource(string hostname = null, string serverId = null, Guid? tenantId = null, string namespaceName = null, string namespaceNameSuffix = null, string hybridConnectionName = null, string accessKey = null, long? expiresOn = null, string serviceConfigurationToken = null)
+        /// <returns> A new <see cref="Models.IngressGatewayAsset"/> instance for mocking. </returns>
+        public static IngressGatewayAsset IngressGatewayAsset(string hostname = null, string serverId = null, Guid? tenantId = null, string namespaceName = null, string namespaceNameSuffix = null, string hybridConnectionName = null, string accessKey = null, long? expiresOn = null, string serviceConfigurationToken = null)
         {
-            return new IngressGatewayResource(
+            return new IngressGatewayAsset(
                 hostname,
                 serverId,
                 tenantId,
@@ -346,13 +346,13 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
             return new ManagedProxyContent(service, hostname, serviceName, serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="Models.ManagedProxyResource"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="Models.ManagedProxyAsset"/>. </summary>
         /// <param name="proxy"> The short lived proxy name. </param>
         /// <param name="expiresOn"> The expiration time of short lived proxy name in unix epoch. </param>
-        /// <returns> A new <see cref="Models.ManagedProxyResource"/> instance for mocking. </returns>
-        public static ManagedProxyResource ManagedProxyResource(string proxy = null, long expiresOn = default)
+        /// <returns> A new <see cref="Models.ManagedProxyAsset"/> instance for mocking. </returns>
+        public static ManagedProxyAsset ManagedProxyAsset(string proxy = null, long expiresOn = default)
         {
-            return new ManagedProxyResource(proxy, expiresOn, serializedAdditionalRawData: null);
+            return new ManagedProxyAsset(proxy, expiresOn, serializedAdditionalRawData: null);
         }
     }
 }
