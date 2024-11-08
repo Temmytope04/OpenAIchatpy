@@ -87,11 +87,11 @@ namespace Azure.ResourceManager.HybridConnectivity
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, "Invalid resource type {0} expected {1}", id.ResourceType, ResourceType), nameof(id));
         }
 
-        /// <summary> Gets a collection of InventoryResources in the SolutionConfiguration. </summary>
-        /// <returns> An object representing collection of InventoryResources and their operations over a InventoryResource. </returns>
-        public virtual InventoryResourceCollection GetInventoryResources()
+        /// <summary> Gets a collection of HybridConnectivityInventoryResources in the SolutionConfiguration. </summary>
+        /// <returns> An object representing collection of HybridConnectivityInventoryResources and their operations over a HybridConnectivityInventoryResource. </returns>
+        public virtual HybridConnectivityInventoryResourceCollection GetHybridConnectivityInventoryResources()
         {
-            return GetCachedClient(client => new InventoryResourceCollection(client, Id));
+            return GetCachedClient(client => new HybridConnectivityInventoryResourceCollection(client, Id));
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="InventoryResource"/></description>
+        /// <description><see cref="HybridConnectivityInventoryResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -120,9 +120,9 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <exception cref="ArgumentNullException"> <paramref name="inventoryId"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="inventoryId"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual async Task<Response<InventoryResource>> GetInventoryResourceAsync(string inventoryId, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<HybridConnectivityInventoryResource>> GetHybridConnectivityInventoryResourceAsync(string inventoryId, CancellationToken cancellationToken = default)
         {
-            return await GetInventoryResources().GetAsync(inventoryId, cancellationToken).ConfigureAwait(false);
+            return await GetHybridConnectivityInventoryResources().GetAsync(inventoryId, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="InventoryResource"/></description>
+        /// <description><see cref="HybridConnectivityInventoryResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -151,9 +151,9 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <exception cref="ArgumentNullException"> <paramref name="inventoryId"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="inventoryId"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual Response<InventoryResource> GetInventoryResource(string inventoryId, CancellationToken cancellationToken = default)
+        public virtual Response<HybridConnectivityInventoryResource> GetHybridConnectivityInventoryResource(string inventoryId, CancellationToken cancellationToken = default)
         {
-            return GetInventoryResources().Get(inventoryId, cancellationToken);
+            return GetHybridConnectivityInventoryResources().Get(inventoryId, cancellationToken);
         }
 
         /// <summary>

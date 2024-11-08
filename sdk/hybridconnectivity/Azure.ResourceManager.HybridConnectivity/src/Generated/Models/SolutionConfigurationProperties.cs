@@ -64,7 +64,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="statusDetails"> The detailed message of status details. </param>
         /// <param name="lastSyncOn"> The last time resources were inventoried. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal SolutionConfigurationProperties(ResourceProvisioningState? provisioningState, string solutionType, IDictionary<string, string> solutionSettings, SolutionConfigurationStatus? status, string statusDetails, DateTimeOffset? lastSyncOn, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal SolutionConfigurationProperties(HybridConnectivityResourceProvisioningState? provisioningState, string solutionType, IDictionary<string, string> solutionSettings, SolutionConfigurationStatus? status, string statusDetails, DateTimeOffset? lastSyncOn, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             ProvisioningState = provisioningState;
             SolutionType = solutionType;
@@ -81,7 +81,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         }
 
         /// <summary> The resource provisioning state. </summary>
-        public ResourceProvisioningState? ProvisioningState { get; }
+        public HybridConnectivityResourceProvisioningState? ProvisioningState { get; }
         /// <summary> The type of the solution. </summary>
         public string SolutionType { get; set; }
         /// <summary> Solution settings. </summary>

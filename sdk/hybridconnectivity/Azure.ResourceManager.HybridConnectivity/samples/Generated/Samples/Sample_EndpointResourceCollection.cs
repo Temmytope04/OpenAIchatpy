@@ -267,7 +267,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             string endpointName = "custom";
             EndpointResourceData data = new EndpointResourceData()
             {
-                Properties = new EndpointProperties(EndpointType.Custom)
+                Properties = new HybridConnectivityEndpointProperties(EndpointType.Custom)
                 {
                     ResourceId = "/subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.Relay/namespaces/custom-relay-namespace",
                 },
@@ -306,7 +306,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             string endpointName = "default";
             EndpointResourceData data = new EndpointResourceData()
             {
-                Properties = new EndpointProperties(EndpointType.Default),
+                Properties = new HybridConnectivityEndpointProperties(EndpointType.Default),
             };
             ArmOperation<EndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, endpointName, data);
             EndpointResource result = lro.Value;

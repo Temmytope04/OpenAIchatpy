@@ -36,7 +36,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
             // invoke the operation
-            GenerateAwsTemplateContent content = new GenerateAwsTemplateContent("pnxcfjidglabnwxit")
+            GenerateAwsTemplateContent content = new GenerateAwsTemplateContent(new ResourceIdentifier("pnxcfjidglabnwxit"))
             {
                 SolutionTypes =
 {

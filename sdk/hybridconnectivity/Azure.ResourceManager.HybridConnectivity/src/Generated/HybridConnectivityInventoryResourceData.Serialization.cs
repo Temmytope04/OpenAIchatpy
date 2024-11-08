@@ -15,11 +15,11 @@ using Azure.ResourceManager.Models;
 
 namespace Azure.ResourceManager.HybridConnectivity
 {
-    public partial class InventoryResourceData : IUtf8JsonSerializable, IJsonModel<InventoryResourceData>
+    public partial class HybridConnectivityInventoryResourceData : IUtf8JsonSerializable, IJsonModel<HybridConnectivityInventoryResourceData>
     {
-        void IUtf8JsonSerializable.Write(Utf8JsonWriter writer) => ((IJsonModel<InventoryResourceData>)this).Write(writer, ModelSerializationExtensions.WireOptions);
+        void IUtf8JsonSerializable.Write(Utf8JsonWriter writer) => ((IJsonModel<HybridConnectivityInventoryResourceData>)this).Write(writer, ModelSerializationExtensions.WireOptions);
 
-        void IJsonModel<InventoryResourceData>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
+        void IJsonModel<HybridConnectivityInventoryResourceData>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
             writer.WriteStartObject();
             JsonModelWriteCore(writer, options);
@@ -30,10 +30,10 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <param name="options"> The client options for reading and writing models. </param>
         protected override void JsonModelWriteCore(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<InventoryResourceData>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<HybridConnectivityInventoryResourceData>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
-                throw new FormatException($"The model {nameof(InventoryResourceData)} does not support writing '{format}' format.");
+                throw new FormatException($"The model {nameof(HybridConnectivityInventoryResourceData)} does not support writing '{format}' format.");
             }
 
             base.JsonModelWriteCore(writer, options);
@@ -44,19 +44,19 @@ namespace Azure.ResourceManager.HybridConnectivity
             }
         }
 
-        InventoryResourceData IJsonModel<InventoryResourceData>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
+        HybridConnectivityInventoryResourceData IJsonModel<HybridConnectivityInventoryResourceData>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<InventoryResourceData>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<HybridConnectivityInventoryResourceData>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
-                throw new FormatException($"The model {nameof(InventoryResourceData)} does not support reading '{format}' format.");
+                throw new FormatException($"The model {nameof(HybridConnectivityInventoryResourceData)} does not support reading '{format}' format.");
             }
 
             using JsonDocument document = JsonDocument.ParseValue(ref reader);
-            return DeserializeInventoryResourceData(document.RootElement, options);
+            return DeserializeHybridConnectivityInventoryResourceData(document.RootElement, options);
         }
 
-        internal static InventoryResourceData DeserializeInventoryResourceData(JsonElement element, ModelReaderWriterOptions options = null)
+        internal static HybridConnectivityInventoryResourceData DeserializeHybridConnectivityInventoryResourceData(JsonElement element, ModelReaderWriterOptions options = null)
         {
             options ??= ModelSerializationExtensions.WireOptions;
 
@@ -64,7 +64,7 @@ namespace Azure.ResourceManager.HybridConnectivity
             {
                 return null;
             }
-            InventoryProperties properties = default;
+            HybridConnectivityInventoryProperties properties = default;
             ResourceIdentifier id = default;
             string name = default;
             ResourceType type = default;
@@ -79,7 +79,7 @@ namespace Azure.ResourceManager.HybridConnectivity
                     {
                         continue;
                     }
-                    properties = InventoryProperties.DeserializeInventoryProperties(property.Value, options);
+                    properties = HybridConnectivityInventoryProperties.DeserializeHybridConnectivityInventoryProperties(property.Value, options);
                     continue;
                 }
                 if (property.NameEquals("id"u8))
@@ -112,7 +112,7 @@ namespace Azure.ResourceManager.HybridConnectivity
                 }
             }
             serializedAdditionalRawData = rawDataDictionary;
-            return new InventoryResourceData(
+            return new HybridConnectivityInventoryResourceData(
                 id,
                 name,
                 type,
@@ -121,35 +121,35 @@ namespace Azure.ResourceManager.HybridConnectivity
                 serializedAdditionalRawData);
         }
 
-        BinaryData IPersistableModel<InventoryResourceData>.Write(ModelReaderWriterOptions options)
+        BinaryData IPersistableModel<HybridConnectivityInventoryResourceData>.Write(ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<InventoryResourceData>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<HybridConnectivityInventoryResourceData>)this).GetFormatFromOptions(options) : options.Format;
 
             switch (format)
             {
                 case "J":
                     return ModelReaderWriter.Write(this, options);
                 default:
-                    throw new FormatException($"The model {nameof(InventoryResourceData)} does not support writing '{options.Format}' format.");
+                    throw new FormatException($"The model {nameof(HybridConnectivityInventoryResourceData)} does not support writing '{options.Format}' format.");
             }
         }
 
-        InventoryResourceData IPersistableModel<InventoryResourceData>.Create(BinaryData data, ModelReaderWriterOptions options)
+        HybridConnectivityInventoryResourceData IPersistableModel<HybridConnectivityInventoryResourceData>.Create(BinaryData data, ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<InventoryResourceData>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<HybridConnectivityInventoryResourceData>)this).GetFormatFromOptions(options) : options.Format;
 
             switch (format)
             {
                 case "J":
                     {
                         using JsonDocument document = JsonDocument.Parse(data);
-                        return DeserializeInventoryResourceData(document.RootElement, options);
+                        return DeserializeHybridConnectivityInventoryResourceData(document.RootElement, options);
                     }
                 default:
-                    throw new FormatException($"The model {nameof(InventoryResourceData)} does not support reading '{options.Format}' format.");
+                    throw new FormatException($"The model {nameof(HybridConnectivityInventoryResourceData)} does not support reading '{options.Format}' format.");
             }
         }
 
-        string IPersistableModel<InventoryResourceData>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+        string IPersistableModel<HybridConnectivityInventoryResourceData>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
     }
 }

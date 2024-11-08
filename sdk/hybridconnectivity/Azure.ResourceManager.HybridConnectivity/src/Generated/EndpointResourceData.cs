@@ -63,13 +63,13 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <param name="systemData"> The systemData. </param>
         /// <param name="properties"> The endpoint properties. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal EndpointResourceData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, EndpointProperties properties, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(id, name, resourceType, systemData)
+        internal EndpointResourceData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, HybridConnectivityEndpointProperties properties, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(id, name, resourceType, systemData)
         {
             Properties = properties;
             _serializedAdditionalRawData = serializedAdditionalRawData;
         }
 
         /// <summary> The endpoint properties. </summary>
-        public EndpointProperties Properties { get; set; }
+        public HybridConnectivityEndpointProperties Properties { get; set; }
     }
 }

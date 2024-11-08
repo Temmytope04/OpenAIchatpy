@@ -60,7 +60,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="hostname"> The target host name. </param>
         /// <param name="serviceName"> The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal ManagedProxyContent(string service, string hostname, ServiceName? serviceName, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal ManagedProxyContent(string service, string hostname, HybridConnectivityServiceName? serviceName, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             Service = service;
             Hostname = hostname;
@@ -78,6 +78,6 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <summary> The target host name. </summary>
         public string Hostname { get; set; }
         /// <summary> The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed. </summary>
-        public ServiceName? ServiceName { get; set; }
+        public HybridConnectivityServiceName? ServiceName { get; set; }
     }
 }

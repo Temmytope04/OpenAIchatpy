@@ -86,10 +86,10 @@ namespace Azure.ResourceManager.HybridConnectivity
             string name = default;
             ResourceType type = default;
             SystemData systemData = default;
-            ServiceName? serviceName = default;
-            string resourceId = default;
+            HybridConnectivityServiceName? serviceName = default;
+            ResourceIdentifier resourceId = default;
             long? port = default;
-            ProvisioningState? provisioningState = default;
+            HybridConnectivityProvisioningState? provisioningState = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -133,12 +133,16 @@ namespace Azure.ResourceManager.HybridConnectivity
                             {
                                 continue;
                             }
-                            serviceName = new ServiceName(property0.Value.GetString());
+                            serviceName = new HybridConnectivityServiceName(property0.Value.GetString());
                             continue;
                         }
                         if (property0.NameEquals("resourceId"u8))
                         {
-                            resourceId = property0.Value.GetString();
+                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            {
+                                continue;
+                            }
+                            resourceId = new ResourceIdentifier(property0.Value.GetString());
                             continue;
                         }
                         if (property0.NameEquals("port"u8))
@@ -156,7 +160,7 @@ namespace Azure.ResourceManager.HybridConnectivity
                             {
                                 continue;
                             }
-                            provisioningState = new ProvisioningState(property0.Value.GetString());
+                            provisioningState = new HybridConnectivityProvisioningState(property0.Value.GetString());
                             continue;
                         }
                     }

@@ -12,7 +12,7 @@ using Azure.Identity;
 
 namespace Azure.ResourceManager.HybridConnectivity.Samples
 {
-    public partial class Sample_InventoryResourceCollection
+    public partial class Sample_HybridConnectivityInventoryResourceCollection
     {
         // Inventory_ListBySolutionConfiguration
         [NUnit.Framework.Test]
@@ -34,15 +34,15 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             ResourceIdentifier solutionConfigurationResourceId = SolutionConfigurationResource.CreateResourceIdentifier(resourceUri, solutionConfiguration);
             SolutionConfigurationResource solutionConfiguration0 = client.GetSolutionConfigurationResource(solutionConfigurationResourceId);
 
-            // get the collection of this InventoryResource
-            InventoryResourceCollection collection = solutionConfiguration0.GetInventoryResources();
+            // get the collection of this HybridConnectivityInventoryResource
+            HybridConnectivityInventoryResourceCollection collection = solutionConfiguration0.GetHybridConnectivityInventoryResources();
 
             // invoke the operation and iterate over the result
-            await foreach (InventoryResource item in collection.GetAllAsync())
+            await foreach (HybridConnectivityInventoryResource item in collection.GetAllAsync())
             {
                 // the variable item is a resource, you could call other operations on this instance as well
                 // but just for demo, we get its data from this resource instance
-                InventoryResourceData resourceData = item.Data;
+                HybridConnectivityInventoryResourceData resourceData = item.Data;
                 // for demo we just print out the id
                 Console.WriteLine($"Succeeded on id: {resourceData.Id}");
             }
@@ -70,16 +70,16 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             ResourceIdentifier solutionConfigurationResourceId = SolutionConfigurationResource.CreateResourceIdentifier(resourceUri, solutionConfiguration);
             SolutionConfigurationResource solutionConfiguration0 = client.GetSolutionConfigurationResource(solutionConfigurationResourceId);
 
-            // get the collection of this InventoryResource
-            InventoryResourceCollection collection = solutionConfiguration0.GetInventoryResources();
+            // get the collection of this HybridConnectivityInventoryResource
+            HybridConnectivityInventoryResourceCollection collection = solutionConfiguration0.GetHybridConnectivityInventoryResources();
 
             // invoke the operation
             string inventoryId = "xofprmcboosrbd";
-            InventoryResource result = await collection.GetAsync(inventoryId);
+            HybridConnectivityInventoryResource result = await collection.GetAsync(inventoryId);
 
             // the variable result is a resource, you could call other operations on this instance as well
             // but just for demo, we get its data from this resource instance
-            InventoryResourceData resourceData = result.Data;
+            HybridConnectivityInventoryResourceData resourceData = result.Data;
             // for demo we just print out the id
             Console.WriteLine($"Succeeded on id: {resourceData.Id}");
         }
@@ -104,8 +104,8 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             ResourceIdentifier solutionConfigurationResourceId = SolutionConfigurationResource.CreateResourceIdentifier(resourceUri, solutionConfiguration);
             SolutionConfigurationResource solutionConfiguration0 = client.GetSolutionConfigurationResource(solutionConfigurationResourceId);
 
-            // get the collection of this InventoryResource
-            InventoryResourceCollection collection = solutionConfiguration0.GetInventoryResources();
+            // get the collection of this HybridConnectivityInventoryResource
+            HybridConnectivityInventoryResourceCollection collection = solutionConfiguration0.GetHybridConnectivityInventoryResources();
 
             // invoke the operation
             string inventoryId = "xofprmcboosrbd";
@@ -134,13 +134,13 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             ResourceIdentifier solutionConfigurationResourceId = SolutionConfigurationResource.CreateResourceIdentifier(resourceUri, solutionConfiguration);
             SolutionConfigurationResource solutionConfiguration0 = client.GetSolutionConfigurationResource(solutionConfigurationResourceId);
 
-            // get the collection of this InventoryResource
-            InventoryResourceCollection collection = solutionConfiguration0.GetInventoryResources();
+            // get the collection of this HybridConnectivityInventoryResource
+            HybridConnectivityInventoryResourceCollection collection = solutionConfiguration0.GetHybridConnectivityInventoryResources();
 
             // invoke the operation
             string inventoryId = "xofprmcboosrbd";
-            NullableResponse<InventoryResource> response = await collection.GetIfExistsAsync(inventoryId);
-            InventoryResource result = response.HasValue ? response.Value : null;
+            NullableResponse<HybridConnectivityInventoryResource> response = await collection.GetIfExistsAsync(inventoryId);
+            HybridConnectivityInventoryResource result = response.HasValue ? response.Value : null;
 
             if (result == null)
             {
@@ -150,7 +150,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             {
                 // the variable result is a resource, you could call other operations on this instance as well
                 // but just for demo, we get its data from this resource instance
-                InventoryResourceData resourceData = result.Data;
+                HybridConnectivityInventoryResourceData resourceData = result.Data;
                 // for demo we just print out the id
                 Console.WriteLine($"Succeeded on id: {resourceData.Id}");
             }

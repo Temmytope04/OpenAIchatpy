@@ -104,7 +104,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
             {
                 return null;
             }
-            ResourceProvisioningState? provisioningState = default;
+            HybridConnectivityResourceProvisioningState? provisioningState = default;
             string solutionType = default;
             IDictionary<string, string> solutionSettings = default;
             SolutionConfigurationStatus? status = default;
@@ -120,7 +120,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
                     {
                         continue;
                     }
-                    provisioningState = new ResourceProvisioningState(property.Value.GetString());
+                    provisioningState = new HybridConnectivityResourceProvisioningState(property.Value.GetString());
                     continue;
                 }
                 if (property.NameEquals("solutionType"u8))

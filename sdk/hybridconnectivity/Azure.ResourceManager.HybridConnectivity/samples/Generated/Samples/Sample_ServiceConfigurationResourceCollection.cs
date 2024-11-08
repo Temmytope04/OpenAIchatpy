@@ -290,7 +290,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             string serviceConfigurationName = "SSH";
             ServiceConfigurationResourceData data = new ServiceConfigurationResourceData()
             {
-                ServiceName = ServiceName.SSH,
+                ServiceName = HybridConnectivityServiceName.SSH,
                 Port = 22L,
             };
             ArmOperation<ServiceConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceConfigurationName, data);
@@ -330,7 +330,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             string serviceConfigurationName = "WAC";
             ServiceConfigurationResourceData data = new ServiceConfigurationResourceData()
             {
-                ServiceName = ServiceName.WAC,
+                ServiceName = HybridConnectivityServiceName.WAC,
                 Port = 6516L,
             };
             ArmOperation<ServiceConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceConfigurationName, data);

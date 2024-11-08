@@ -14,10 +14,10 @@ using Azure.ResourceManager.Models;
 namespace Azure.ResourceManager.HybridConnectivity
 {
     /// <summary>
-    /// A class representing the InventoryResource data model.
+    /// A class representing the HybridConnectivityInventoryResource data model.
     /// Concrete proxy resource types can be created by aliasing this type using a specific property type.
     /// </summary>
-    public partial class InventoryResourceData : ResourceData
+    public partial class HybridConnectivityInventoryResourceData : ResourceData
     {
         /// <summary>
         /// Keeps track of any properties unknown to the library.
@@ -51,25 +51,25 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// </summary>
         private IDictionary<string, BinaryData> _serializedAdditionalRawData;
 
-        /// <summary> Initializes a new instance of <see cref="InventoryResourceData"/>. </summary>
-        public InventoryResourceData()
+        /// <summary> Initializes a new instance of <see cref="HybridConnectivityInventoryResourceData"/>. </summary>
+        public HybridConnectivityInventoryResourceData()
         {
         }
 
-        /// <summary> Initializes a new instance of <see cref="InventoryResourceData"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="HybridConnectivityInventoryResourceData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
         /// <param name="systemData"> The systemData. </param>
         /// <param name="properties"> The resource-specific properties for this resource. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal InventoryResourceData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, InventoryProperties properties, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(id, name, resourceType, systemData)
+        internal HybridConnectivityInventoryResourceData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, HybridConnectivityInventoryProperties properties, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(id, name, resourceType, systemData)
         {
             Properties = properties;
             _serializedAdditionalRawData = serializedAdditionalRawData;
         }
 
         /// <summary> The resource-specific properties for this resource. </summary>
-        public InventoryProperties Properties { get; set; }
+        public HybridConnectivityInventoryProperties Properties { get; set; }
     }
 }

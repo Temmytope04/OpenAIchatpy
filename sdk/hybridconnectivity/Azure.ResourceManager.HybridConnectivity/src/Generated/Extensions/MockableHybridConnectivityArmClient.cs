@@ -192,15 +192,15 @@ namespace Azure.ResourceManager.HybridConnectivity.Mocking
         }
 
         /// <summary>
-        /// Gets an object representing an <see cref="InventoryResource"/> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="InventoryResource.CreateResourceIdentifier" /> to create an <see cref="InventoryResource"/> <see cref="ResourceIdentifier"/> from its components.
+        /// Gets an object representing a <see cref="HybridConnectivityInventoryResource"/> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="HybridConnectivityInventoryResource.CreateResourceIdentifier" /> to create a <see cref="HybridConnectivityInventoryResource"/> <see cref="ResourceIdentifier"/> from its components.
         /// </summary>
         /// <param name="id"> The resource ID of the resource to get. </param>
-        /// <returns> Returns a <see cref="InventoryResource"/> object. </returns>
-        public virtual InventoryResource GetInventoryResource(ResourceIdentifier id)
+        /// <returns> Returns a <see cref="HybridConnectivityInventoryResource"/> object. </returns>
+        public virtual HybridConnectivityInventoryResource GetHybridConnectivityInventoryResource(ResourceIdentifier id)
         {
-            InventoryResource.ValidateResourceId(id);
-            return new InventoryResource(Client, id);
+            HybridConnectivityInventoryResource.ValidateResourceId(id);
+            return new HybridConnectivityInventoryResource(Client, id);
         }
 
         /// <summary>

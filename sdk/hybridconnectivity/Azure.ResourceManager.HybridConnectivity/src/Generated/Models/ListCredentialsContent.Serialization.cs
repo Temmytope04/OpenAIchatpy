@@ -76,7 +76,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
             {
                 return null;
             }
-            ServiceName? serviceName = default;
+            HybridConnectivityServiceName? serviceName = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -87,7 +87,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
                     {
                         continue;
                     }
-                    serviceName = new ServiceName(property.Value.GetString());
+                    serviceName = new HybridConnectivityServiceName(property.Value.GetString());
                     continue;
                 }
                 if (options.Format != "W")

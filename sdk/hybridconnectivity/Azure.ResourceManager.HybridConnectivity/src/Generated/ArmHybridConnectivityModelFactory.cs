@@ -42,7 +42,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="statusDetails"> The detailed message of status details. </param>
         /// <param name="lastSyncOn"> The last time resources were inventoried. </param>
         /// <returns> A new <see cref="Models.SolutionConfigurationProperties"/> instance for mocking. </returns>
-        public static SolutionConfigurationProperties SolutionConfigurationProperties(ResourceProvisioningState? provisioningState = null, string solutionType = null, IDictionary<string, string> solutionSettings = null, SolutionConfigurationStatus? status = null, string statusDetails = null, DateTimeOffset? lastSyncOn = null)
+        public static SolutionConfigurationProperties SolutionConfigurationProperties(HybridConnectivityResourceProvisioningState? provisioningState = null, string solutionType = null, IDictionary<string, string> solutionSettings = null, SolutionConfigurationStatus? status = null, string statusDetails = null, DateTimeOffset? lastSyncOn = null)
         {
             solutionSettings ??= new Dictionary<string, string>();
 
@@ -74,16 +74,16 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="HybridConnectivity.InventoryResourceData"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="HybridConnectivity.HybridConnectivityInventoryResourceData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
         /// <param name="systemData"> The systemData. </param>
         /// <param name="properties"> The resource-specific properties for this resource. </param>
-        /// <returns> A new <see cref="HybridConnectivity.InventoryResourceData"/> instance for mocking. </returns>
-        public static InventoryResourceData InventoryResourceData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, InventoryProperties properties = null)
+        /// <returns> A new <see cref="HybridConnectivity.HybridConnectivityInventoryResourceData"/> instance for mocking. </returns>
+        public static HybridConnectivityInventoryResourceData HybridConnectivityInventoryResourceData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, HybridConnectivityInventoryProperties properties = null)
         {
-            return new InventoryResourceData(
+            return new HybridConnectivityInventoryResourceData(
                 id,
                 name,
                 resourceType,
@@ -92,17 +92,17 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="Models.InventoryProperties"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="Models.HybridConnectivityInventoryProperties"/>. </summary>
         /// <param name="cloudNativeType"> Gets or sets the cloud native resource type. </param>
         /// <param name="cloudNativeResourceId"> Gets or sets the cloud native resource name. </param>
         /// <param name="azureResourceId"> Gets or sets the mapped azure resource id. </param>
         /// <param name="status"> Gets or sets the status of the inventory. </param>
         /// <param name="statusDetails"> Gets or sets the status details. </param>
         /// <param name="provisioningState"> The resource provisioning state. </param>
-        /// <returns> A new <see cref="Models.InventoryProperties"/> instance for mocking. </returns>
-        public static InventoryProperties InventoryProperties(CloudNativeType? cloudNativeType = null, string cloudNativeResourceId = null, string azureResourceId = null, SolutionConfigurationStatus? status = null, string statusDetails = null, ResourceProvisioningState? provisioningState = null)
+        /// <returns> A new <see cref="Models.HybridConnectivityInventoryProperties"/> instance for mocking. </returns>
+        public static HybridConnectivityInventoryProperties HybridConnectivityInventoryProperties(HybridConnectivityCloudNativeType? cloudNativeType = null, string cloudNativeResourceId = null, ResourceIdentifier azureResourceId = null, SolutionConfigurationStatus? status = null, string statusDetails = null, HybridConnectivityResourceProvisioningState? provisioningState = null)
         {
-            return new InventoryProperties(
+            return new HybridConnectivityInventoryProperties(
                 cloudNativeType,
                 cloudNativeResourceId,
                 azureResourceId,
@@ -144,7 +144,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="connectorId"> The name of public cloud connector. </param>
         /// <param name="solutionTypes"> The list of solution types and their settings. </param>
         /// <returns> A new <see cref="Models.GenerateAwsTemplateContent"/> instance for mocking. </returns>
-        public static GenerateAwsTemplateContent GenerateAwsTemplateContent(string connectorId = null, IEnumerable<SolutionTypeSettings> solutionTypes = null)
+        public static GenerateAwsTemplateContent GenerateAwsTemplateContent(ResourceIdentifier connectorId = null, IEnumerable<SolutionTypeSettings> solutionTypes = null)
         {
             solutionTypes ??= new List<SolutionTypeSettings>();
 
@@ -192,7 +192,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="provisioningState"> The resource provisioning state. </param>
         /// <param name="connectorPrimaryIdentifier"> Connector primary identifier. </param>
         /// <returns> A new <see cref="Models.PublicCloudConnectorProperties"/> instance for mocking. </returns>
-        public static PublicCloudConnectorProperties PublicCloudConnectorProperties(AwsCloudProfile awsCloudProfile = null, HostType hostType = default, ResourceProvisioningState? provisioningState = null, string connectorPrimaryIdentifier = null)
+        public static PublicCloudConnectorProperties PublicCloudConnectorProperties(AwsCloudProfile awsCloudProfile = null, HybridConnectivityHostType hostType = default, HybridConnectivityResourceProvisioningState? provisioningState = null, Guid? connectorPrimaryIdentifier = null)
         {
             return new PublicCloudConnectorProperties(awsCloudProfile, hostType, provisioningState, connectorPrimaryIdentifier, serializedAdditionalRawData: null);
         }
@@ -245,7 +245,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="systemData"> The systemData. </param>
         /// <param name="properties"> The endpoint properties. </param>
         /// <returns> A new <see cref="HybridConnectivity.EndpointResourceData"/> instance for mocking. </returns>
-        public static EndpointResourceData EndpointResourceData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, EndpointProperties properties = null)
+        public static EndpointResourceData EndpointResourceData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, HybridConnectivityEndpointProperties properties = null)
         {
             return new EndpointResourceData(
                 id,
@@ -256,14 +256,14 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="Models.EndpointProperties"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="Models.HybridConnectivityEndpointProperties"/>. </summary>
         /// <param name="endpointType"> The type of endpoint. </param>
         /// <param name="resourceId"> The resource Id of the connectivity endpoint (optional). </param>
         /// <param name="provisioningState"> The resource provisioning state. </param>
-        /// <returns> A new <see cref="Models.EndpointProperties"/> instance for mocking. </returns>
-        public static EndpointProperties EndpointProperties(EndpointType endpointType = default, string resourceId = null, string provisioningState = null)
+        /// <returns> A new <see cref="Models.HybridConnectivityEndpointProperties"/> instance for mocking. </returns>
+        public static HybridConnectivityEndpointProperties HybridConnectivityEndpointProperties(EndpointType endpointType = default, string resourceId = null, string provisioningState = null)
         {
-            return new EndpointProperties(endpointType, resourceId, provisioningState, serializedAdditionalRawData: null);
+            return new HybridConnectivityEndpointProperties(endpointType, resourceId, provisioningState, serializedAdditionalRawData: null);
         }
 
         /// <summary> Initializes a new instance of <see cref="HybridConnectivity.ServiceConfigurationResourceData"/>. </summary>
@@ -276,7 +276,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="port"> The port on which service is enabled. </param>
         /// <param name="provisioningState"> The resource provisioning state. </param>
         /// <returns> A new <see cref="HybridConnectivity.ServiceConfigurationResourceData"/> instance for mocking. </returns>
-        public static ServiceConfigurationResourceData ServiceConfigurationResourceData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, ServiceName? serviceName = null, string resourceId = null, long? port = null, ProvisioningState? provisioningState = null)
+        public static ServiceConfigurationResourceData ServiceConfigurationResourceData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, HybridConnectivityServiceName? serviceName = null, ResourceIdentifier resourceId = null, long? port = null, HybridConnectivityProvisioningState? provisioningState = null)
         {
             return new ServiceConfigurationResourceData(
                 id,
@@ -341,7 +341,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="hostname"> The target host name. </param>
         /// <param name="serviceName"> The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed. </param>
         /// <returns> A new <see cref="Models.ManagedProxyContent"/> instance for mocking. </returns>
-        public static ManagedProxyContent ManagedProxyContent(string service = null, string hostname = null, ServiceName? serviceName = null)
+        public static ManagedProxyContent ManagedProxyContent(string service = null, string hostname = null, HybridConnectivityServiceName? serviceName = null)
         {
             return new ManagedProxyContent(service, hostname, serviceName, serializedAdditionalRawData: null);
         }

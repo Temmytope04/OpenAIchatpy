@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace Azure.ResourceManager.HybridConnectivity.Models
 {
     /// <summary> Endpoint details. </summary>
-    public partial class EndpointProperties
+    public partial class HybridConnectivityEndpointProperties
     {
         /// <summary>
         /// Keeps track of any properties unknown to the library.
@@ -45,19 +45,19 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// </summary>
         private IDictionary<string, BinaryData> _serializedAdditionalRawData;
 
-        /// <summary> Initializes a new instance of <see cref="EndpointProperties"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="HybridConnectivityEndpointProperties"/>. </summary>
         /// <param name="endpointType"> The type of endpoint. </param>
-        public EndpointProperties(EndpointType endpointType)
+        public HybridConnectivityEndpointProperties(EndpointType endpointType)
         {
             EndpointType = endpointType;
         }
 
-        /// <summary> Initializes a new instance of <see cref="EndpointProperties"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="HybridConnectivityEndpointProperties"/>. </summary>
         /// <param name="endpointType"> The type of endpoint. </param>
         /// <param name="resourceId"> The resource Id of the connectivity endpoint (optional). </param>
         /// <param name="provisioningState"> The resource provisioning state. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal EndpointProperties(EndpointType endpointType, string resourceId, string provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal HybridConnectivityEndpointProperties(EndpointType endpointType, string resourceId, string provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             EndpointType = endpointType;
             ResourceId = resourceId;
@@ -65,8 +65,8 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
             _serializedAdditionalRawData = serializedAdditionalRawData;
         }
 
-        /// <summary> Initializes a new instance of <see cref="EndpointProperties"/> for deserialization. </summary>
-        internal EndpointProperties()
+        /// <summary> Initializes a new instance of <see cref="HybridConnectivityEndpointProperties"/> for deserialization. </summary>
+        internal HybridConnectivityEndpointProperties()
         {
         }
 

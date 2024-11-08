@@ -96,7 +96,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             // invoke the operation
             EndpointResourceData data = new EndpointResourceData()
             {
-                Properties = new EndpointProperties(EndpointType.Default),
+                Properties = new HybridConnectivityEndpointProperties(EndpointType.Default),
             };
             EndpointResource result = await endpointResource.UpdateAsync(data);
 
@@ -154,7 +154,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             // invoke the operation
             ListCredentialsContent content = new ListCredentialsContent()
             {
-                ServiceName = ServiceName.SSH,
+                ServiceName = HybridConnectivityServiceName.SSH,
             };
             long? expiresin = 10800L;
             TargetResourceEndpointAccess result = await endpointResource.GetCredentialsAsync(content: content, expiresin: expiresin);
@@ -213,7 +213,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             ManagedProxyContent content = new ManagedProxyContent("127.0.0.1:65035")
             {
                 Hostname = "r.proxy.arc.com",
-                ServiceName = ServiceName.WAC,
+                ServiceName = HybridConnectivityServiceName.WAC,
             };
             ManagedProxyAsset result = await endpointResource.GetManagedProxyDetailsAsync(content);
 

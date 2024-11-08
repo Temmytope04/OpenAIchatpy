@@ -46,7 +46,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
             if (options.Format != "W" && Optional.IsDefined(ConnectorPrimaryIdentifier))
             {
                 writer.WritePropertyName("connectorPrimaryIdentifier"u8);
-                writer.WriteStringValue(ConnectorPrimaryIdentifier);
+                writer.WriteStringValue(ConnectorPrimaryIdentifier.Value);
             }
             if (options.Format != "W" && _serializedAdditionalRawData != null)
             {
@@ -86,9 +86,9 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
                 return null;
             }
             AwsCloudProfile awsCloudProfile = default;
-            HostType hostType = default;
-            ResourceProvisioningState? provisioningState = default;
-            string connectorPrimaryIdentifier = default;
+            HybridConnectivityHostType hostType = default;
+            HybridConnectivityResourceProvisioningState? provisioningState = default;
+            Guid? connectorPrimaryIdentifier = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -100,7 +100,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
                 }
                 if (property.NameEquals("hostType"u8))
                 {
-                    hostType = new HostType(property.Value.GetString());
+                    hostType = new HybridConnectivityHostType(property.Value.GetString());
                     continue;
                 }
                 if (property.NameEquals("provisioningState"u8))
@@ -109,12 +109,16 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
                     {
                         continue;
                     }
-                    provisioningState = new ResourceProvisioningState(property.Value.GetString());
+                    provisioningState = new HybridConnectivityResourceProvisioningState(property.Value.GetString());
                     continue;
                 }
                 if (property.NameEquals("connectorPrimaryIdentifier"u8))
                 {
-                    connectorPrimaryIdentifier = property.Value.GetString();
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    connectorPrimaryIdentifier = property.Value.GetGuid();
                     continue;
                 }
                 if (options.Format != "W")

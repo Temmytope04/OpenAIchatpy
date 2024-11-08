@@ -12,7 +12,7 @@ using Azure.Identity;
 
 namespace Azure.ResourceManager.HybridConnectivity.Samples
 {
-    public partial class Sample_InventoryResource
+    public partial class Sample_HybridConnectivityInventoryResource
     {
         // Inventory_Get
         [NUnit.Framework.Test]
@@ -27,20 +27,20 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
             // authenticate your client
             ArmClient client = new ArmClient(cred);
 
-            // this example assumes you already have this InventoryResource created on azure
-            // for more information of creating InventoryResource, please refer to the document of InventoryResource
+            // this example assumes you already have this HybridConnectivityInventoryResource created on azure
+            // for more information of creating HybridConnectivityInventoryResource, please refer to the document of HybridConnectivityInventoryResource
             string resourceUri = "ymuj";
             string solutionConfiguration = "zarfsraogroxlaqjjnwixtn";
             string inventoryId = "xofprmcboosrbd";
-            ResourceIdentifier inventoryResourceId = InventoryResource.CreateResourceIdentifier(resourceUri, solutionConfiguration, inventoryId);
-            InventoryResource inventoryResource = client.GetInventoryResource(inventoryResourceId);
+            ResourceIdentifier hybridConnectivityInventoryResourceId = HybridConnectivityInventoryResource.CreateResourceIdentifier(resourceUri, solutionConfiguration, inventoryId);
+            HybridConnectivityInventoryResource hybridConnectivityInventoryResource = client.GetHybridConnectivityInventoryResource(hybridConnectivityInventoryResourceId);
 
             // invoke the operation
-            InventoryResource result = await inventoryResource.GetAsync();
+            HybridConnectivityInventoryResource result = await hybridConnectivityInventoryResource.GetAsync();
 
             // the variable result is a resource, you could call other operations on this instance as well
             // but just for demo, we get its data from this resource instance
-            InventoryResourceData resourceData = result.Data;
+            HybridConnectivityInventoryResourceData resourceData = result.Data;
             // for demo we just print out the id
             Console.WriteLine($"Succeeded on id: {resourceData.Id}");
         }

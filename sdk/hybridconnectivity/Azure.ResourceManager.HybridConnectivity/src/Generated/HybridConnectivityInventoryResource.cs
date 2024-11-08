@@ -15,14 +15,14 @@ using Azure.Core.Pipeline;
 namespace Azure.ResourceManager.HybridConnectivity
 {
     /// <summary>
-    /// A Class representing an InventoryResource along with the instance operations that can be performed on it.
-    /// If you have a <see cref="ResourceIdentifier"/> you can construct an <see cref="InventoryResource"/>
-    /// from an instance of <see cref="ArmClient"/> using the GetInventoryResource method.
-    /// Otherwise you can get one from its parent resource <see cref="SolutionConfigurationResource"/> using the GetInventoryResource method.
+    /// A Class representing a HybridConnectivityInventoryResource along with the instance operations that can be performed on it.
+    /// If you have a <see cref="ResourceIdentifier"/> you can construct a <see cref="HybridConnectivityInventoryResource"/>
+    /// from an instance of <see cref="ArmClient"/> using the GetHybridConnectivityInventoryResource method.
+    /// Otherwise you can get one from its parent resource <see cref="SolutionConfigurationResource"/> using the GetHybridConnectivityInventoryResource method.
     /// </summary>
-    public partial class InventoryResource : ArmResource
+    public partial class HybridConnectivityInventoryResource : ArmResource
     {
-        /// <summary> Generate the resource identifier of a <see cref="InventoryResource"/> instance. </summary>
+        /// <summary> Generate the resource identifier of a <see cref="HybridConnectivityInventoryResource"/> instance. </summary>
         /// <param name="resourceUri"> The resourceUri. </param>
         /// <param name="solutionConfiguration"> The solutionConfiguration. </param>
         /// <param name="inventoryId"> The inventoryId. </param>
@@ -32,35 +32,35 @@ namespace Azure.ResourceManager.HybridConnectivity
             return new ResourceIdentifier(resourceId);
         }
 
-        private readonly ClientDiagnostics _inventoryResourceInventoryClientDiagnostics;
-        private readonly InventoryRestOperations _inventoryResourceInventoryRestClient;
-        private readonly InventoryResourceData _data;
+        private readonly ClientDiagnostics _hybridConnectivityInventoryResourceInventoryClientDiagnostics;
+        private readonly InventoryRestOperations _hybridConnectivityInventoryResourceInventoryRestClient;
+        private readonly HybridConnectivityInventoryResourceData _data;
 
         /// <summary> Gets the resource type for the operations. </summary>
         public static readonly ResourceType ResourceType = "Microsoft.HybridConnectivity/solutionConfigurations/inventory";
 
-        /// <summary> Initializes a new instance of the <see cref="InventoryResource"/> class for mocking. </summary>
-        protected InventoryResource()
+        /// <summary> Initializes a new instance of the <see cref="HybridConnectivityInventoryResource"/> class for mocking. </summary>
+        protected HybridConnectivityInventoryResource()
         {
         }
 
-        /// <summary> Initializes a new instance of the <see cref="InventoryResource"/> class. </summary>
+        /// <summary> Initializes a new instance of the <see cref="HybridConnectivityInventoryResource"/> class. </summary>
         /// <param name="client"> The client parameters to use in these operations. </param>
         /// <param name="data"> The resource that is the target of operations. </param>
-        internal InventoryResource(ArmClient client, InventoryResourceData data) : this(client, data.Id)
+        internal HybridConnectivityInventoryResource(ArmClient client, HybridConnectivityInventoryResourceData data) : this(client, data.Id)
         {
             HasData = true;
             _data = data;
         }
 
-        /// <summary> Initializes a new instance of the <see cref="InventoryResource"/> class. </summary>
+        /// <summary> Initializes a new instance of the <see cref="HybridConnectivityInventoryResource"/> class. </summary>
         /// <param name="client"> The client parameters to use in these operations. </param>
         /// <param name="id"> The identifier of the resource that is the target of operations. </param>
-        internal InventoryResource(ArmClient client, ResourceIdentifier id) : base(client, id)
+        internal HybridConnectivityInventoryResource(ArmClient client, ResourceIdentifier id) : base(client, id)
         {
-            _inventoryResourceInventoryClientDiagnostics = new ClientDiagnostics("Azure.ResourceManager.HybridConnectivity", ResourceType.Namespace, Diagnostics);
-            TryGetApiVersion(ResourceType, out string inventoryResourceInventoryApiVersion);
-            _inventoryResourceInventoryRestClient = new InventoryRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint, inventoryResourceInventoryApiVersion);
+            _hybridConnectivityInventoryResourceInventoryClientDiagnostics = new ClientDiagnostics("Azure.ResourceManager.HybridConnectivity", ResourceType.Namespace, Diagnostics);
+            TryGetApiVersion(ResourceType, out string hybridConnectivityInventoryResourceInventoryApiVersion);
+            _hybridConnectivityInventoryResourceInventoryRestClient = new InventoryRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint, hybridConnectivityInventoryResourceInventoryApiVersion);
 #if DEBUG
 			ValidateResourceId(Id);
 #endif
@@ -71,7 +71,7 @@ namespace Azure.ResourceManager.HybridConnectivity
 
         /// <summary> Gets the data representing this Feature. </summary>
         /// <exception cref="InvalidOperationException"> Throws if there is no data loaded in the current instance. </exception>
-        public virtual InventoryResourceData Data
+        public virtual HybridConnectivityInventoryResourceData Data
         {
             get
             {
@@ -104,21 +104,21 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="InventoryResource"/></description>
+        /// <description><see cref="HybridConnectivityInventoryResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual async Task<Response<InventoryResource>> GetAsync(CancellationToken cancellationToken = default)
+        public virtual async Task<Response<HybridConnectivityInventoryResource>> GetAsync(CancellationToken cancellationToken = default)
         {
-            using var scope = _inventoryResourceInventoryClientDiagnostics.CreateScope("InventoryResource.Get");
+            using var scope = _hybridConnectivityInventoryResourceInventoryClientDiagnostics.CreateScope("HybridConnectivityInventoryResource.Get");
             scope.Start();
             try
             {
-                var response = await _inventoryResourceInventoryRestClient.GetAsync(Id.Parent.Parent, Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
+                var response = await _hybridConnectivityInventoryResourceInventoryRestClient.GetAsync(Id.Parent.Parent, Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
-                return Response.FromValue(new InventoryResource(Client, response.Value), response.GetRawResponse());
+                return Response.FromValue(new HybridConnectivityInventoryResource(Client, response.Value), response.GetRawResponse());
             }
             catch (Exception e)
             {
@@ -144,21 +144,21 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="InventoryResource"/></description>
+        /// <description><see cref="HybridConnectivityInventoryResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual Response<InventoryResource> Get(CancellationToken cancellationToken = default)
+        public virtual Response<HybridConnectivityInventoryResource> Get(CancellationToken cancellationToken = default)
         {
-            using var scope = _inventoryResourceInventoryClientDiagnostics.CreateScope("InventoryResource.Get");
+            using var scope = _hybridConnectivityInventoryResourceInventoryClientDiagnostics.CreateScope("HybridConnectivityInventoryResource.Get");
             scope.Start();
             try
             {
-                var response = _inventoryResourceInventoryRestClient.Get(Id.Parent.Parent, Id.Parent.Name, Id.Name, cancellationToken);
+                var response = _hybridConnectivityInventoryResourceInventoryRestClient.Get(Id.Parent.Parent, Id.Parent.Name, Id.Name, cancellationToken);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
-                return Response.FromValue(new InventoryResource(Client, response.Value), response.GetRawResponse());
+                return Response.FromValue(new HybridConnectivityInventoryResource(Client, response.Value), response.GetRawResponse());
             }
             catch (Exception e)
             {

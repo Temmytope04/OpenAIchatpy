@@ -13,11 +13,11 @@ using Azure.Core;
 
 namespace Azure.ResourceManager.HybridConnectivity.Models
 {
-    public partial class EndpointProperties : IUtf8JsonSerializable, IJsonModel<EndpointProperties>
+    public partial class HybridConnectivityEndpointProperties : IUtf8JsonSerializable, IJsonModel<HybridConnectivityEndpointProperties>
     {
-        void IUtf8JsonSerializable.Write(Utf8JsonWriter writer) => ((IJsonModel<EndpointProperties>)this).Write(writer, ModelSerializationExtensions.WireOptions);
+        void IUtf8JsonSerializable.Write(Utf8JsonWriter writer) => ((IJsonModel<HybridConnectivityEndpointProperties>)this).Write(writer, ModelSerializationExtensions.WireOptions);
 
-        void IJsonModel<EndpointProperties>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
+        void IJsonModel<HybridConnectivityEndpointProperties>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
             writer.WriteStartObject();
             JsonModelWriteCore(writer, options);
@@ -28,10 +28,10 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="options"> The client options for reading and writing models. </param>
         protected virtual void JsonModelWriteCore(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<EndpointProperties>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<HybridConnectivityEndpointProperties>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
-                throw new FormatException($"The model {nameof(EndpointProperties)} does not support writing '{format}' format.");
+                throw new FormatException($"The model {nameof(HybridConnectivityEndpointProperties)} does not support writing '{format}' format.");
             }
 
             writer.WritePropertyName("type"u8);
@@ -63,19 +63,19 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
             }
         }
 
-        EndpointProperties IJsonModel<EndpointProperties>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
+        HybridConnectivityEndpointProperties IJsonModel<HybridConnectivityEndpointProperties>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<EndpointProperties>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<HybridConnectivityEndpointProperties>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
-                throw new FormatException($"The model {nameof(EndpointProperties)} does not support reading '{format}' format.");
+                throw new FormatException($"The model {nameof(HybridConnectivityEndpointProperties)} does not support reading '{format}' format.");
             }
 
             using JsonDocument document = JsonDocument.ParseValue(ref reader);
-            return DeserializeEndpointProperties(document.RootElement, options);
+            return DeserializeHybridConnectivityEndpointProperties(document.RootElement, options);
         }
 
-        internal static EndpointProperties DeserializeEndpointProperties(JsonElement element, ModelReaderWriterOptions options = null)
+        internal static HybridConnectivityEndpointProperties DeserializeHybridConnectivityEndpointProperties(JsonElement element, ModelReaderWriterOptions options = null)
         {
             options ??= ModelSerializationExtensions.WireOptions;
 
@@ -111,38 +111,38 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
                 }
             }
             serializedAdditionalRawData = rawDataDictionary;
-            return new EndpointProperties(type, resourceId, provisioningState, serializedAdditionalRawData);
+            return new HybridConnectivityEndpointProperties(type, resourceId, provisioningState, serializedAdditionalRawData);
         }
 
-        BinaryData IPersistableModel<EndpointProperties>.Write(ModelReaderWriterOptions options)
+        BinaryData IPersistableModel<HybridConnectivityEndpointProperties>.Write(ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<EndpointProperties>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<HybridConnectivityEndpointProperties>)this).GetFormatFromOptions(options) : options.Format;
 
             switch (format)
             {
                 case "J":
                     return ModelReaderWriter.Write(this, options);
                 default:
-                    throw new FormatException($"The model {nameof(EndpointProperties)} does not support writing '{options.Format}' format.");
+                    throw new FormatException($"The model {nameof(HybridConnectivityEndpointProperties)} does not support writing '{options.Format}' format.");
             }
         }
 
-        EndpointProperties IPersistableModel<EndpointProperties>.Create(BinaryData data, ModelReaderWriterOptions options)
+        HybridConnectivityEndpointProperties IPersistableModel<HybridConnectivityEndpointProperties>.Create(BinaryData data, ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<EndpointProperties>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<HybridConnectivityEndpointProperties>)this).GetFormatFromOptions(options) : options.Format;
 
             switch (format)
             {
                 case "J":
                     {
                         using JsonDocument document = JsonDocument.Parse(data);
-                        return DeserializeEndpointProperties(document.RootElement, options);
+                        return DeserializeHybridConnectivityEndpointProperties(document.RootElement, options);
                     }
                 default:
-                    throw new FormatException($"The model {nameof(EndpointProperties)} does not support reading '{options.Format}' format.");
+                    throw new FormatException($"The model {nameof(HybridConnectivityEndpointProperties)} does not support reading '{options.Format}' format.");
             }
         }
 
-        string IPersistableModel<EndpointProperties>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+        string IPersistableModel<HybridConnectivityEndpointProperties>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
     }
 }

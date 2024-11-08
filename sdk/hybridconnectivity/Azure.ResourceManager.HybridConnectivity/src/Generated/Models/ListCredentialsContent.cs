@@ -53,13 +53,13 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <summary> Initializes a new instance of <see cref="ListCredentialsContent"/>. </summary>
         /// <param name="serviceName"> The name of the service. If not provided, the request will by pass the generation of service configuration token. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal ListCredentialsContent(ServiceName? serviceName, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal ListCredentialsContent(HybridConnectivityServiceName? serviceName, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             ServiceName = serviceName;
             _serializedAdditionalRawData = serializedAdditionalRawData;
         }
 
         /// <summary> The name of the service. If not provided, the request will by pass the generation of service configuration token. </summary>
-        public ServiceName? ServiceName { get; set; }
+        public HybridConnectivityServiceName? ServiceName { get; set; }
     }
 }

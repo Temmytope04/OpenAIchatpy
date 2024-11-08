@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using Azure.Core;
 
 namespace Azure.ResourceManager.HybridConnectivity.Models
 {
@@ -48,7 +49,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <summary> Initializes a new instance of <see cref="GenerateAwsTemplateContent"/>. </summary>
         /// <param name="connectorId"> The name of public cloud connector. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="connectorId"/> is null. </exception>
-        public GenerateAwsTemplateContent(string connectorId)
+        public GenerateAwsTemplateContent(ResourceIdentifier connectorId)
         {
             Argument.AssertNotNull(connectorId, nameof(connectorId));
 
@@ -60,7 +61,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="connectorId"> The name of public cloud connector. </param>
         /// <param name="solutionTypes"> The list of solution types and their settings. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal GenerateAwsTemplateContent(string connectorId, IList<SolutionTypeSettings> solutionTypes, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal GenerateAwsTemplateContent(ResourceIdentifier connectorId, IList<SolutionTypeSettings> solutionTypes, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             ConnectorId = connectorId;
             SolutionTypes = solutionTypes;
@@ -73,7 +74,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         }
 
         /// <summary> The name of public cloud connector. </summary>
-        public string ConnectorId { get; }
+        public ResourceIdentifier ConnectorId { get; }
         /// <summary> The list of solution types and their settings. </summary>
         public IList<SolutionTypeSettings> SolutionTypes { get; }
     }

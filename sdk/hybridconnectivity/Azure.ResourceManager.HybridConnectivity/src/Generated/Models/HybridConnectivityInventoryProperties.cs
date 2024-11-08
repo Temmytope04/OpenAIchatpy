@@ -7,11 +7,12 @@
 
 using System;
 using System.Collections.Generic;
+using Azure.Core;
 
 namespace Azure.ResourceManager.HybridConnectivity.Models
 {
     /// <summary> Definition of inventory. </summary>
-    public partial class InventoryProperties
+    public partial class HybridConnectivityInventoryProperties
     {
         /// <summary>
         /// Keeps track of any properties unknown to the library.
@@ -45,12 +46,12 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// </summary>
         private IDictionary<string, BinaryData> _serializedAdditionalRawData;
 
-        /// <summary> Initializes a new instance of <see cref="InventoryProperties"/>. </summary>
-        public InventoryProperties()
+        /// <summary> Initializes a new instance of <see cref="HybridConnectivityInventoryProperties"/>. </summary>
+        public HybridConnectivityInventoryProperties()
         {
         }
 
-        /// <summary> Initializes a new instance of <see cref="InventoryProperties"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="HybridConnectivityInventoryProperties"/>. </summary>
         /// <param name="cloudNativeType"> Gets or sets the cloud native resource type. </param>
         /// <param name="cloudNativeResourceId"> Gets or sets the cloud native resource name. </param>
         /// <param name="azureResourceId"> Gets or sets the mapped azure resource id. </param>
@@ -58,7 +59,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         /// <param name="statusDetails"> Gets or sets the status details. </param>
         /// <param name="provisioningState"> The resource provisioning state. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal InventoryProperties(CloudNativeType? cloudNativeType, string cloudNativeResourceId, string azureResourceId, SolutionConfigurationStatus? status, string statusDetails, ResourceProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal HybridConnectivityInventoryProperties(HybridConnectivityCloudNativeType? cloudNativeType, string cloudNativeResourceId, ResourceIdentifier azureResourceId, SolutionConfigurationStatus? status, string statusDetails, HybridConnectivityResourceProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             CloudNativeType = cloudNativeType;
             CloudNativeResourceId = cloudNativeResourceId;
@@ -70,16 +71,16 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
         }
 
         /// <summary> Gets or sets the cloud native resource type. </summary>
-        public CloudNativeType? CloudNativeType { get; set; }
+        public HybridConnectivityCloudNativeType? CloudNativeType { get; set; }
         /// <summary> Gets or sets the cloud native resource name. </summary>
         public string CloudNativeResourceId { get; set; }
         /// <summary> Gets or sets the mapped azure resource id. </summary>
-        public string AzureResourceId { get; set; }
+        public ResourceIdentifier AzureResourceId { get; set; }
         /// <summary> Gets or sets the status of the inventory. </summary>
         public SolutionConfigurationStatus? Status { get; set; }
         /// <summary> Gets or sets the status details. </summary>
         public string StatusDetails { get; set; }
         /// <summary> The resource provisioning state. </summary>
-        public ResourceProvisioningState? ProvisioningState { get; }
+        public HybridConnectivityResourceProvisioningState? ProvisioningState { get; }
     }
 }

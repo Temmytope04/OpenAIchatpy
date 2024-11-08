@@ -64,7 +64,7 @@ namespace Azure.ResourceManager.HybridConnectivity
             {
                 return null;
             }
-            EndpointProperties properties = default;
+            HybridConnectivityEndpointProperties properties = default;
             ResourceIdentifier id = default;
             string name = default;
             ResourceType type = default;
@@ -79,7 +79,7 @@ namespace Azure.ResourceManager.HybridConnectivity
                     {
                         continue;
                     }
-                    properties = EndpointProperties.DeserializeEndpointProperties(property.Value, options);
+                    properties = HybridConnectivityEndpointProperties.DeserializeHybridConnectivityEndpointProperties(property.Value, options);
                     continue;
                 }
                 if (property.NameEquals("id"u8))

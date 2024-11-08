@@ -192,7 +192,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Samples
 "rwgqpukglvbqmogqcliqolucp"
 },
                     IsOrganizationalAccount = true,
-                }, HostType.AWS),
+                }, HybridConnectivityHostType.AWS),
                 Tags =
 {
 },

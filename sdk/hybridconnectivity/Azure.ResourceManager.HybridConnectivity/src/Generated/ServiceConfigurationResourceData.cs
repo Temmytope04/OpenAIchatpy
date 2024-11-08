@@ -66,7 +66,7 @@ namespace Azure.ResourceManager.HybridConnectivity
         /// <param name="port"> The port on which service is enabled. </param>
         /// <param name="provisioningState"> The resource provisioning state. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal ServiceConfigurationResourceData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, ServiceName? serviceName, string resourceId, long? port, ProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(id, name, resourceType, systemData)
+        internal ServiceConfigurationResourceData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, HybridConnectivityServiceName? serviceName, ResourceIdentifier resourceId, long? port, HybridConnectivityProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(id, name, resourceType, systemData)
         {
             ServiceName = serviceName;
             ResourceId = resourceId;
@@ -76,12 +76,12 @@ namespace Azure.ResourceManager.HybridConnectivity
         }
 
         /// <summary> Name of the service. </summary>
-        public ServiceName? ServiceName { get; set; }
+        public HybridConnectivityServiceName? ServiceName { get; set; }
         /// <summary> The resource Id of the connectivity endpoint (optional). </summary>
-        public string ResourceId { get; set; }
+        public ResourceIdentifier ResourceId { get; set; }
         /// <summary> The port on which service is enabled. </summary>
         public long? Port { get; set; }
         /// <summary> The resource provisioning state. </summary>
-        public ProvisioningState? ProvisioningState { get; }
+        public HybridConnectivityProvisioningState? ProvisioningState { get; }
     }
 }

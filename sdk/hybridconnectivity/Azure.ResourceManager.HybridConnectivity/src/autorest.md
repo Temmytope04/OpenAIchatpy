@@ -50,10 +50,23 @@ acronym-mapping:
   URI: Uri
   Etag: ETag|etag
 
+prepend-rp-prefix:
+  - InventoryResource
+  - CloudNativeType
+  - EndpointProperties
+  - HostType
+  - InventoryProperties
+  - ProvisioningState
+  - ResourceProvisioningState
+  - ServiceName
+
 rename-mapping:
   # IngressGatewayResource and ManagedProxyResource are not ARM resource but end with Resource suffix which is not allowed, so we need to rename them
   IngressGatewayResource: IngressGatewayAsset
   ManagedProxyResource: ManagedProxyAsset
+  # format transform
+  AADProfileProperties.serverId: -|uuid
+  PublicCloudConnectorProperties.connectorPrimaryIdentifier: -|uuid
 
 directive:
   - rename-model:
@@ -68,5 +81,18 @@ directive:
     where: $.parameters.ResourceUriParameter
     transform: >
       $["x-ms-client-name"] = "scope"
+
+    # To generate as Azure.Core.ResourceIdentifier
+  - from: swagger-document
+    where: $.definitions.ServiceConfigurationProperties.properties.resourceId
+    transform: $['x-ms-format'] = 'arm-id'
+
+  - from: swagger-document
+    where: $.definitions.GenerateAwsTemplateRequest.properties.connectorId
+    transform: $['x-ms-format'] = 'arm-id'
+
+  - from: swagger-document
+    where: $.definitions.InventoryProperties.properties.azureResourceId
+    transform: $['x-ms-format'] = 'arm-id'
 
 ```

@@ -83,7 +83,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
             {
                 return null;
             }
-            string connectorId = default;
+            ResourceIdentifier connectorId = default;
             IList<SolutionTypeSettings> solutionTypes = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
@@ -91,7 +91,7 @@ namespace Azure.ResourceManager.HybridConnectivity.Models
             {
                 if (property.NameEquals("connectorId"u8))
                 {
-                    connectorId = property.Value.GetString();
+                    connectorId = new ResourceIdentifier(property.Value.GetString());
                     continue;
                 }
                 if (property.NameEquals("solutionTypes"u8))

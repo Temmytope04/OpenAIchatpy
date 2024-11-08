@@ -243,22 +243,22 @@ namespace Azure.ResourceManager.HybridConnectivity
         }
 
         /// <summary>
-        /// Gets an object representing an <see cref="InventoryResource" /> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="InventoryResource.CreateResourceIdentifier" /> to create an <see cref="InventoryResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// Gets an object representing a <see cref="HybridConnectivityInventoryResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="HybridConnectivityInventoryResource.CreateResourceIdentifier" /> to create a <see cref="HybridConnectivityInventoryResource" /> <see cref="ResourceIdentifier" /> from its components.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableHybridConnectivityArmClient.GetInventoryResource(ResourceIdentifier)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableHybridConnectivityArmClient.GetHybridConnectivityInventoryResource(ResourceIdentifier)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
         /// <param name="id"> The resource ID of the resource to get. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="client"/> is null. </exception>
-        /// <returns> Returns a <see cref="InventoryResource"/> object. </returns>
-        public static InventoryResource GetInventoryResource(this ArmClient client, ResourceIdentifier id)
+        /// <returns> Returns a <see cref="HybridConnectivityInventoryResource"/> object. </returns>
+        public static HybridConnectivityInventoryResource GetHybridConnectivityInventoryResource(this ArmClient client, ResourceIdentifier id)
         {
             Argument.AssertNotNull(client, nameof(client));
 
-            return GetMockableHybridConnectivityArmClient(client).GetInventoryResource(id);
+            return GetMockableHybridConnectivityArmClient(client).GetHybridConnectivityInventoryResource(id);
         }
 
         /// <summary>
