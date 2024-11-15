@@ -41,15 +41,10 @@ namespace Azure.Health.Deidentification
                 writer.WritePropertyName("operation"u8);
                 writer.WriteStringValue(Operation.Value.ToString());
             }
-            if (Optional.IsDefined(DataType))
+            if (Optional.IsDefined(Customizations))
             {
-                writer.WritePropertyName("dataType"u8);
-                writer.WriteStringValue(DataType.Value.ToString());
-            }
-            if (Optional.IsDefined(RedactionFormat))
-            {
-                writer.WritePropertyName("redactionFormat"u8);
-                writer.WriteStringValue(RedactionFormat);
+                writer.WritePropertyName("customizations"u8);
+                writer.WriteObjectValue(Customizations, options);
             }
             if (options.Format != "W" && _serializedAdditionalRawData != null)
             {
@@ -90,8 +85,7 @@ namespace Azure.Health.Deidentification
             }
             string inputText = default;
             OperationType? operation = default;
-            DocumentDataType? dataType = default;
-            string redactionFormat = default;
+            CustomizationOptions customizations = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -110,18 +104,13 @@ namespace Azure.Health.Deidentification
                     operation = new OperationType(property.Value.GetString());
                     continue;
                 }
-                if (property.NameEquals("dataType"u8))
+                if (property.NameEquals("customizations"u8))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
                         continue;
                     }
-                    dataType = new DocumentDataType(property.Value.GetString());
-                    continue;
-                }
-                if (property.NameEquals("redactionFormat"u8))
-                {
-                    redactionFormat = property.Value.GetString();
+                    customizations = CustomizationOptions.DeserializeCustomizationOptions(property.Value, options);
                     continue;
                 }
                 if (options.Format != "W")
@@ -130,7 +119,7 @@ namespace Azure.Health.Deidentification
                 }
             }
             serializedAdditionalRawData = rawDataDictionary;
-            return new DeidentificationContent(inputText, operation, dataType, redactionFormat, serializedAdditionalRawData);
+            return new DeidentificationContent(inputText, operation, customizations, serializedAdditionalRawData);
         }
 
         BinaryData IPersistableModel<DeidentificationContent>.Write(ModelReaderWriterOptions options)

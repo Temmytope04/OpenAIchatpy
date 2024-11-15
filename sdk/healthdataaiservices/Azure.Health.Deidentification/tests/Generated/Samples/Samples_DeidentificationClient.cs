@@ -172,7 +172,7 @@ namespace Azure.Health.Deidentification.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public void Example_DeidServices_Deidentify_DeIdentifyText()
+        public void Example_DeidServices_DeidentifyText_DeIdentifyText()
         {
             Uri endpoint = new Uri("<endpoint>");
             TokenCredential credential = new DefaultAzureCredential();
@@ -182,10 +182,13 @@ namespace Azure.Health.Deidentification.Samples
             {
                 inputText = "Hello my name is John Smith.",
                 operation = "Redact",
-                dataType = "Plaintext",
-                redactionFormat = "[{type}]",
+                customizations = new
+                {
+                    redactionFormat = "[{type}]",
+                    surrogateLocale = "en-US",
+                },
             });
-            Response response = client.Deidentify(content);
+            Response response = client.DeidentifyText(content);
 
             JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
             Console.WriteLine(result.ToString());
@@ -193,7 +196,7 @@ namespace Azure.Health.Deidentification.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task Example_DeidServices_Deidentify_DeIdentifyText_Async()
+        public async Task Example_DeidServices_DeidentifyText_DeIdentifyText_Async()
         {
             Uri endpoint = new Uri("<endpoint>");
             TokenCredential credential = new DefaultAzureCredential();
@@ -203,10 +206,13 @@ namespace Azure.Health.Deidentification.Samples
             {
                 inputText = "Hello my name is John Smith.",
                 operation = "Redact",
-                dataType = "Plaintext",
-                redactionFormat = "[{type}]",
+                customizations = new
+                {
+                    redactionFormat = "[{type}]",
+                    surrogateLocale = "en-US",
+                },
             });
-            Response response = await client.DeidentifyAsync(content);
+            Response response = await client.DeidentifyTextAsync(content);
 
             JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
             Console.WriteLine(result.ToString());
@@ -214,173 +220,47 @@ namespace Azure.Health.Deidentification.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public void Example_DeidServices_Deidentify_DeIdentifyText_Convenience()
+        public void Example_DeidServices_DeidentifyText_DeIdentifyText_Convenience()
         {
             Uri endpoint = new Uri("<endpoint>");
             TokenCredential credential = new DefaultAzureCredential();
             DeidentificationClient client = new DeidentificationClient(endpoint, credential);
 
-            DeidentificationContent body = new DeidentificationContent("Hello my name is John Smith.")
+            DeidentificationContent content = new DeidentificationContent("Hello my name is John Smith.")
             {
                 Operation = OperationType.Redact,
-                DataType = DocumentDataType.Plaintext,
-                RedactionFormat = "[{type}]",
+                Customizations = new CustomizationOptions
+                {
+                    RedactionFormat = "[{type}]",
+                    SurrogateLocale = "en-US",
+                },
             };
-            Response<DeidentificationResult> response = client.Deidentify(body);
+            Response<DeidentificationResult> response = client.DeidentifyText(content);
         }
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task Example_DeidServices_Deidentify_DeIdentifyText_Convenience_Async()
+        public async Task Example_DeidServices_DeidentifyText_DeIdentifyText_Convenience_Async()
         {
             Uri endpoint = new Uri("<endpoint>");
             TokenCredential credential = new DefaultAzureCredential();
             DeidentificationClient client = new DeidentificationClient(endpoint, credential);
 
-            DeidentificationContent body = new DeidentificationContent("Hello my name is John Smith.")
+            DeidentificationContent content = new DeidentificationContent("Hello my name is John Smith.")
             {
                 Operation = OperationType.Redact,
-                DataType = DocumentDataType.Plaintext,
-                RedactionFormat = "[{type}]",
+                Customizations = new CustomizationOptions
+                {
+                    RedactionFormat = "[{type}]",
+                    SurrogateLocale = "en-US",
+                },
             };
-            Response<DeidentificationResult> response = await client.DeidentifyAsync(body);
+            Response<DeidentificationResult> response = await client.DeidentifyTextAsync(content);
         }
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public void Example_DeidentificationJob_GetJobs_ListDeIdentificationJobs()
-        {
-            Uri endpoint = new Uri("<endpoint>");
-            TokenCredential credential = new DefaultAzureCredential();
-            DeidentificationClient client = new DeidentificationClient(endpoint, credential);
-
-            foreach (BinaryData item in client.GetJobs(10, "K1JJRDpzOEtaQWZabUQrQUNBQUFBQUFBQUFBQT09I1JUOjEjVFJDOjEwI0ZQQzpBZ0VBQUFBTUFDUUFBQUFBQUE9PQ==", null))
-            {
-                JsonElement result = JsonDocument.Parse(item.ToStream()).RootElement;
-                Console.WriteLine(result.GetProperty("name").ToString());
-                Console.WriteLine(result.GetProperty("sourceLocation").GetProperty("location").ToString());
-                Console.WriteLine(result.GetProperty("sourceLocation").GetProperty("prefix").ToString());
-                Console.WriteLine(result.GetProperty("targetLocation").GetProperty("location").ToString());
-                Console.WriteLine(result.GetProperty("targetLocation").GetProperty("prefix").ToString());
-                Console.WriteLine(result.GetProperty("status").ToString());
-                Console.WriteLine(result.GetProperty("lastUpdatedAt").ToString());
-                Console.WriteLine(result.GetProperty("createdAt").ToString());
-            }
-        }
-
-        [Test]
-        [Ignore("Only validating compilation of examples")]
-        public async Task Example_DeidentificationJob_GetJobs_ListDeIdentificationJobs_Async()
-        {
-            Uri endpoint = new Uri("<endpoint>");
-            TokenCredential credential = new DefaultAzureCredential();
-            DeidentificationClient client = new DeidentificationClient(endpoint, credential);
-
-            await foreach (BinaryData item in client.GetJobsAsync(10, "K1JJRDpzOEtaQWZabUQrQUNBQUFBQUFBQUFBQT09I1JUOjEjVFJDOjEwI0ZQQzpBZ0VBQUFBTUFDUUFBQUFBQUE9PQ==", null))
-            {
-                JsonElement result = JsonDocument.Parse(item.ToStream()).RootElement;
-                Console.WriteLine(result.GetProperty("name").ToString());
-                Console.WriteLine(result.GetProperty("sourceLocation").GetProperty("location").ToString());
-                Console.WriteLine(result.GetProperty("sourceLocation").GetProperty("prefix").ToString());
-                Console.WriteLine(result.GetProperty("targetLocation").GetProperty("location").ToString());
-                Console.WriteLine(result.GetProperty("targetLocation").GetProperty("prefix").ToString());
-                Console.WriteLine(result.GetProperty("status").ToString());
-                Console.WriteLine(result.GetProperty("lastUpdatedAt").ToString());
-                Console.WriteLine(result.GetProperty("createdAt").ToString());
-            }
-        }
-
-        [Test]
-        [Ignore("Only validating compilation of examples")]
-        public void Example_DeidentificationJob_GetJobs_ListDeIdentificationJobs_Convenience()
-        {
-            Uri endpoint = new Uri("<endpoint>");
-            TokenCredential credential = new DefaultAzureCredential();
-            DeidentificationClient client = new DeidentificationClient(endpoint, credential);
-
-            foreach (DeidentificationJob item in client.GetJobs())
-            {
-            }
-        }
-
-        [Test]
-        [Ignore("Only validating compilation of examples")]
-        public async Task Example_DeidentificationJob_GetJobs_ListDeIdentificationJobs_Convenience_Async()
-        {
-            Uri endpoint = new Uri("<endpoint>");
-            TokenCredential credential = new DefaultAzureCredential();
-            DeidentificationClient client = new DeidentificationClient(endpoint, credential);
-
-            await foreach (DeidentificationJob item in client.GetJobsAsync())
-            {
-            }
-        }
-
-        [Test]
-        [Ignore("Only validating compilation of examples")]
-        public void Example_DocumentDetails_GetJobDocuments_ListProcessedDocumentsWithinAJob()
-        {
-            Uri endpoint = new Uri("<endpoint>");
-            TokenCredential credential = new DefaultAzureCredential();
-            DeidentificationClient client = new DeidentificationClient(endpoint, credential);
-
-            foreach (BinaryData item in client.GetJobDocuments("documents_smith_1", 10, "K1JJRDpzOEtaQWZabUQrQUNBQUFBQUFBQUFBQT09I1JUOjEjVFJDOjEwI0ZQQzpBZ0VBQUFBTUFDUUFBQUFBQUE9PQ==", null))
-            {
-                JsonElement result = JsonDocument.Parse(item.ToStream()).RootElement;
-                Console.WriteLine(result.GetProperty("id").ToString());
-                Console.WriteLine(result.GetProperty("input").GetProperty("path").ToString());
-                Console.WriteLine(result.GetProperty("input").GetProperty("etag").ToString());
-                Console.WriteLine(result.GetProperty("status").ToString());
-            }
-        }
-
-        [Test]
-        [Ignore("Only validating compilation of examples")]
-        public async Task Example_DocumentDetails_GetJobDocuments_ListProcessedDocumentsWithinAJob_Async()
-        {
-            Uri endpoint = new Uri("<endpoint>");
-            TokenCredential credential = new DefaultAzureCredential();
-            DeidentificationClient client = new DeidentificationClient(endpoint, credential);
-
-            await foreach (BinaryData item in client.GetJobDocumentsAsync("documents_smith_1", 10, "K1JJRDpzOEtaQWZabUQrQUNBQUFBQUFBQUFBQT09I1JUOjEjVFJDOjEwI0ZQQzpBZ0VBQUFBTUFDUUFBQUFBQUE9PQ==", null))
-            {
-                JsonElement result = JsonDocument.Parse(item.ToStream()).RootElement;
-                Console.WriteLine(result.GetProperty("id").ToString());
-                Console.WriteLine(result.GetProperty("input").GetProperty("path").ToString());
-                Console.WriteLine(result.GetProperty("input").GetProperty("etag").ToString());
-                Console.WriteLine(result.GetProperty("status").ToString());
-            }
-        }
-
-        [Test]
-        [Ignore("Only validating compilation of examples")]
-        public void Example_DocumentDetails_GetJobDocuments_ListProcessedDocumentsWithinAJob_Convenience()
-        {
-            Uri endpoint = new Uri("<endpoint>");
-            TokenCredential credential = new DefaultAzureCredential();
-            DeidentificationClient client = new DeidentificationClient(endpoint, credential);
-
-            foreach (DocumentDetails item in client.GetJobDocuments("documents_smith_1"))
-            {
-            }
-        }
-
-        [Test]
-        [Ignore("Only validating compilation of examples")]
-        public async Task Example_DocumentDetails_GetJobDocuments_ListProcessedDocumentsWithinAJob_Convenience_Async()
-        {
-            Uri endpoint = new Uri("<endpoint>");
-            TokenCredential credential = new DefaultAzureCredential();
-            DeidentificationClient client = new DeidentificationClient(endpoint, credential);
-
-            await foreach (DocumentDetails item in client.GetJobDocumentsAsync("documents_smith_1"))
-            {
-            }
-        }
-
-        [Test]
-        [Ignore("Only validating compilation of examples")]
-        public void Example_DeidentificationJob_CreateJob_CreateADeIdentificationJob()
+        public void Example_DeidentificationJob_DeidentifyDocuments_CreateADeIdentificationJob()
         {
             Uri endpoint = new Uri("<endpoint>");
             TokenCredential credential = new DefaultAzureCredential();
@@ -388,9 +268,10 @@ namespace Azure.Health.Deidentification.Samples
 
             using RequestContent content = RequestContent.Create(new
             {
+                operation = "Redact",
                 sourceLocation = new
                 {
-                    location = "https://blobtest.blob.core.windows.net/container?sp=r&st=2024-01-24T18:11:10Z&se=2024-01-25T02:11:10Z&spr=https&sv=2022-11-02&sr=c&sig=signature%3D",
+                    location = "https://blobtest.blob.core.windows.net/container",
                     prefix = "/documents",
                     extensions = new object[]
             {
@@ -399,15 +280,33 @@ namespace Azure.Health.Deidentification.Samples
                 },
                 targetLocation = new
                 {
-                    location = "https://blobtest.blob.core.windows.net/container?sp=r&st=2024-01-24T18:11:10Z&se=2024-01-25T02:11:10Z&spr=https&sv=2022-11-02&sr=c&sig=signature%3D",
+                    location = "https://blobtest.blob.core.windows.net/container",
                     prefix = "/documents",
+                    overwrite = true,
                 },
-                operation = "Redact",
-                dataType = "Plaintext",
-                redactionFormat = "[{type}]",
+                customizations = new
+                {
+                    redactionFormat = "[{type}]",
+                    surrogateLocale = "en-US",
+                },
                 status = "NotStarted",
+                error = new
+                {
+                    code = "FileNotFound",
+                    message = "File was moved after job started.",
+                    target = "SourceFile",
+                    details = Array.Empty<object>(),
+                },
+                summary = new
+                {
+                    successful = 10,
+                    failed = 0,
+                    canceled = 0,
+                    total = 10,
+                    bytesProcessed = 4096L,
+                },
             });
-            Operation<BinaryData> operation = client.CreateJob(WaitUntil.Completed, "documents_smith_1", content);
+            Operation<BinaryData> operation = client.DeidentifyDocuments(WaitUntil.Completed, "documents_smith_1", content);
             BinaryData responseData = operation.Value;
 
             JsonElement result = JsonDocument.Parse(responseData.ToStream()).RootElement;
@@ -423,7 +322,7 @@ namespace Azure.Health.Deidentification.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task Example_DeidentificationJob_CreateJob_CreateADeIdentificationJob_Async()
+        public async Task Example_DeidentificationJob_DeidentifyDocuments_CreateADeIdentificationJob_Async()
         {
             Uri endpoint = new Uri("<endpoint>");
             TokenCredential credential = new DefaultAzureCredential();
@@ -431,9 +330,10 @@ namespace Azure.Health.Deidentification.Samples
 
             using RequestContent content = RequestContent.Create(new
             {
+                operation = "Redact",
                 sourceLocation = new
                 {
-                    location = "https://blobtest.blob.core.windows.net/container?sp=r&st=2024-01-24T18:11:10Z&se=2024-01-25T02:11:10Z&spr=https&sv=2022-11-02&sr=c&sig=signature%3D",
+                    location = "https://blobtest.blob.core.windows.net/container",
                     prefix = "/documents",
                     extensions = new object[]
             {
@@ -442,15 +342,33 @@ namespace Azure.Health.Deidentification.Samples
                 },
                 targetLocation = new
                 {
-                    location = "https://blobtest.blob.core.windows.net/container?sp=r&st=2024-01-24T18:11:10Z&se=2024-01-25T02:11:10Z&spr=https&sv=2022-11-02&sr=c&sig=signature%3D",
+                    location = "https://blobtest.blob.core.windows.net/container",
                     prefix = "/documents",
+                    overwrite = true,
                 },
-                operation = "Redact",
-                dataType = "Plaintext",
-                redactionFormat = "[{type}]",
+                customizations = new
+                {
+                    redactionFormat = "[{type}]",
+                    surrogateLocale = "en-US",
+                },
                 status = "NotStarted",
+                error = new
+                {
+                    code = "FileNotFound",
+                    message = "File was moved after job started.",
+                    target = "SourceFile",
+                    details = Array.Empty<object>(),
+                },
+                summary = new
+                {
+                    successful = 10,
+                    failed = 0,
+                    canceled = 0,
+                    total = 10,
+                    bytesProcessed = 4096L,
+                },
             });
-            Operation<BinaryData> operation = await client.CreateJobAsync(WaitUntil.Completed, "documents_smith_1", content);
+            Operation<BinaryData> operation = await client.DeidentifyDocumentsAsync(WaitUntil.Completed, "documents_smith_1", content);
             BinaryData responseData = operation.Value;
 
             JsonElement result = JsonDocument.Parse(responseData.ToStream()).RootElement;
@@ -466,43 +384,55 @@ namespace Azure.Health.Deidentification.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public void Example_DeidentificationJob_CreateJob_CreateADeIdentificationJob_Convenience()
+        public void Example_DeidentificationJob_DeidentifyDocuments_CreateADeIdentificationJob_Convenience()
         {
             Uri endpoint = new Uri("<endpoint>");
             TokenCredential credential = new DefaultAzureCredential();
             DeidentificationClient client = new DeidentificationClient(endpoint, credential);
 
-            DeidentificationJob resource = new DeidentificationJob(new SourceStorageLocation(new Uri("https://blobtest.blob.core.windows.net/container?sp=r&st=2024-01-24T18:11:10Z&se=2024-01-25T02:11:10Z&spr=https&sv=2022-11-02&sr=c&sig=signature%3D"), "/documents")
+            DeidentificationJob resource = new DeidentificationJob(new SourceStorageLocation(new Uri("https://blobtest.blob.core.windows.net/container"), "/documents")
             {
                 Extensions = { "*" },
-            }, new TargetStorageLocation(new Uri("https://blobtest.blob.core.windows.net/container?sp=r&st=2024-01-24T18:11:10Z&se=2024-01-25T02:11:10Z&spr=https&sv=2022-11-02&sr=c&sig=signature%3D"), "/documents"))
+            }, new TargetStorageLocation(new Uri("https://blobtest.blob.core.windows.net/container"), "/documents")
+            {
+                Overwrite = true,
+            })
             {
                 Operation = OperationType.Redact,
-                DataType = DocumentDataType.Plaintext,
-                RedactionFormat = "[{type}]",
+                Customizations = new JobCustomizationOptions
+                {
+                    RedactionFormat = "[{type}]",
+                    SurrogateLocale = "en-US",
+                },
             };
-            Operation<DeidentificationJob> operation = client.CreateJob(WaitUntil.Completed, "documents_smith_1", resource);
+            Operation<DeidentificationJob> operation = client.DeidentifyDocuments(WaitUntil.Completed, "documents_smith_1", resource);
             DeidentificationJob responseData = operation.Value;
         }
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task Example_DeidentificationJob_CreateJob_CreateADeIdentificationJob_Convenience_Async()
+        public async Task Example_DeidentificationJob_DeidentifyDocuments_CreateADeIdentificationJob_Convenience_Async()
         {
             Uri endpoint = new Uri("<endpoint>");
             TokenCredential credential = new DefaultAzureCredential();
             DeidentificationClient client = new DeidentificationClient(endpoint, credential);
 
-            DeidentificationJob resource = new DeidentificationJob(new SourceStorageLocation(new Uri("https://blobtest.blob.core.windows.net/container?sp=r&st=2024-01-24T18:11:10Z&se=2024-01-25T02:11:10Z&spr=https&sv=2022-11-02&sr=c&sig=signature%3D"), "/documents")
+            DeidentificationJob resource = new DeidentificationJob(new SourceStorageLocation(new Uri("https://blobtest.blob.core.windows.net/container"), "/documents")
             {
                 Extensions = { "*" },
-            }, new TargetStorageLocation(new Uri("https://blobtest.blob.core.windows.net/container?sp=r&st=2024-01-24T18:11:10Z&se=2024-01-25T02:11:10Z&spr=https&sv=2022-11-02&sr=c&sig=signature%3D"), "/documents"))
+            }, new TargetStorageLocation(new Uri("https://blobtest.blob.core.windows.net/container"), "/documents")
+            {
+                Overwrite = true,
+            })
             {
                 Operation = OperationType.Redact,
-                DataType = DocumentDataType.Plaintext,
-                RedactionFormat = "[{type}]",
+                Customizations = new JobCustomizationOptions
+                {
+                    RedactionFormat = "[{type}]",
+                    SurrogateLocale = "en-US",
+                },
             };
-            Operation<DeidentificationJob> operation = await client.CreateJobAsync(WaitUntil.Completed, "documents_smith_1", resource);
+            Operation<DeidentificationJob> operation = await client.DeidentifyDocumentsAsync(WaitUntil.Completed, "documents_smith_1", resource);
             DeidentificationJob responseData = operation.Value;
         }
     }
