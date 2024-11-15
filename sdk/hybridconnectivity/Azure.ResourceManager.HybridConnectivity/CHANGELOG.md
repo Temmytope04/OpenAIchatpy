@@ -1,17 +1,14 @@
 # Release History
 
+- Release SDK for MultiCloud
+
 ## 1.0.0-beta.5 (Unreleased)
 
 ### Features Added
 
+- Release SDK for MultiCloud
 - Enable the new model serialization by using the System.ClientModel, refer this [document](https://aka.ms/azsdk/net/mrw) for more details.
 - Exposed `JsonModelWriteCore` for model serialization procedure.
-
-### Breaking Changes
-
-### Bugs Fixed
-
-### Other Changes
 
 ## 1.0.0-beta.4 (2023-11-29)
 
